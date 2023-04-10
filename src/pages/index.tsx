@@ -4,7 +4,7 @@ import { Hero } from "~/features/Home";
 
 const Home: NextPage = () => {
   return (
-    <Page bg="black">
+    <Page>
       <Hero />
     </Page>
   );

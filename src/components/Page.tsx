@@ -3,15 +3,20 @@ import { useScrollLock } from "@mantine/hooks";
 import React, { useEffect } from "react";
 import { keys } from "~/constants";
 import { useRendered } from "~/hooks/useRendered";
+import { Layout } from "~/layouts";
 
-type PageProps = ContainerProps;
+import { GalaxyBg } from "./GalaxyBg";
+
+type PageProps = ContainerProps & {
+  visibleGalaxy?: boolean;
+};
 type PreloadOverlayProps = Omit<CenterProps, "children"> & {
   isLoading: boolean;
   children?: React.ReactNode;
   duration?: number;
 };
 
-export const Page: React.FC<PageProps> = ({ children, ...props }) => {
+export const Page: React.FC<PageProps> = ({ children, visibleGalaxy = true, ...props }) => {
   const { rendered, RenderWrapper } = useRendered();
   const [isScrollLocked, setIsScrollLocked] = useScrollLock(true);
 
@@ -26,8 +31,8 @@ export const Page: React.FC<PageProps> = ({ children, ...props }) => {
   return (
     <>
       <RenderWrapper>
-        <Container size={1920} {...props}>
-          {children}
+        <Container size={1920} px={0} {...props}>
+          <Layout>{visibleGalaxy ? <GalaxyBg>{children}</GalaxyBg> : children}</Layout>
         </Container>
       </RenderWrapper>
 

@@ -1,3 +1,5 @@
+import "@total-typescript/ts-reset";
+
 declare module "*.woff2" {
   const src: string;
   export default src;

@@ -6,3 +6,4 @@ export * from "./menus";
 export * from "./keys";
 export * from "./configs";
 export * from "./paths";
+export * from "./colors";
