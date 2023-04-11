@@ -1,5 +1,11 @@
 import axios from "axios";
 
+interface IRoi {
+  times: number;
+  currency: string;
+  percentage: number;
+}
+
 export type PropsCurrency = {
   image: string;
   symbol: string;
@@ -26,7 +32,7 @@ export type PropsCurrency = {
   max_supply: number | null;
   price_change_24h: number;
   price_change_percentage_24h: number;
-  roi: number | null;
+  roi: IRoi | null;
 };
 
 export const getAllCurrencies = async (ids = "bitcoin,ethereum,binancecoin,binance-usd,tether") => {

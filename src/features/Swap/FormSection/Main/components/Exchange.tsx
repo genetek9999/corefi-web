@@ -32,19 +32,26 @@ export const Exchange = () => {
     }
   };
 
-  if (!exchangeRatio) return <></>;
-
   return (
     <Group spacing={5}>
       <TbReload size={20} />
 
-      <Text fz={{ base: 12 }} fw={500} lh="1em !important">
-        1 {displayTokens[0]?.symbol.toUpperCase()} = {exchangeRatio} {displayTokens[1]?.symbol.toUpperCase()}
-      </Text>
+      {!exchangeRatio ? (
+        <Text fz={{ base: 12 }} fw={500} lh="1em !important">
+          Calculating...
+        </Text>
+      ) : (
+        <>
+          <Text fz={{ base: 12 }} fw={500} lh="1em !important">
+            1 {displayTokens[0]?.symbol.toUpperCase()} = {exchangeRatio.toFixed(2)}{" "}
+            {displayTokens[1]?.symbol.toUpperCase()}
+          </Text>
 
-      <Box sx={{ lh: "1em !important", cursor: "pointer" }} onClick={handleSwap}>
-        <IconSwap />
-      </Box>
+          <Box lh="1em !important" sx={{ cursor: "pointer" }} onClick={handleSwap}>
+            <IconSwap />
+          </Box>
+        </>
+      )}
     </Group>
   );
 };

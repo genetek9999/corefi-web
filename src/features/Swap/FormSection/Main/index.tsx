@@ -1,10 +1,11 @@
-import { Box, type BoxProps, Button, Group } from "@mantine/core";
+import { Box, type BoxProps, Group } from "@mantine/core";
 import React from "react";
 import { ButtonCommon } from "~/components";
 import { colors } from "~/constants";
 import { useMetamask } from "~/contexts";
 
 import { useValue } from "../../hooks";
+import { BoxDisplay } from "../components";
 import { Balance, ButtonSwitch, Exchange, Information, InputFrom, InputTo, Slippage } from "./components";
 
 export const Main = () => {
@@ -24,7 +25,7 @@ export const Main = () => {
   };
 
   return (
-    <>
+    <BoxDisplay value="main">
       <Wrapper>
         <Group position="right" mb={12}>
           <Balance onClick={handleClickBalanceFrom} />
@@ -54,7 +55,7 @@ export const Main = () => {
         bg={colors.PRIMARY_COLOR}
         variant="filled"
         tt="capitalize"
-        my={20}
+        mb={20}
         onClick={handleClickSubmit}
       >
         {!address ? "Connect wallet" : "Swap"}
@@ -63,7 +64,7 @@ export const Main = () => {
       <Wrapper p={5}>
         <Information />
       </Wrapper>
-    </>
+    </BoxDisplay>
   );
 };
 

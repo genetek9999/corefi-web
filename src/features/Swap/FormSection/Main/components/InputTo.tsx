@@ -18,7 +18,7 @@ export const InputTo = () => {
 
   const valueTo = useMemo(() => {
     if (valueFrom) {
-      return ((parseFloat(valueFrom) * tokenPriceTo) / tokenPriceFrom).toString();
+      return (parseFloat(valueFrom) * (tokenPriceFrom / tokenPriceTo)).toFixed(2).toString();
     }
 
     return "";
@@ -27,9 +27,13 @@ export const InputTo = () => {
   return (
     <Group spacing={8}>
       <Input
-        variant="unstyled"
         placeholder="0.0"
-        sx={{ "*": { fontSize: 24, fontWeight: 500 }, input: { color: "#fff" }, flex: 1 }}
+        variant="unstyled"
+        sx={{
+          "*": { fontSize: 24, fontWeight: 500 },
+          input: { color: "#fff" },
+          flex: 1,
+        }}
         px={0}
         readOnly
         value={valueTo}
@@ -39,7 +43,7 @@ export const InputTo = () => {
         ~{formatPrice(tokenPriceTo)}
       </Text>
 
-      <SelectToken token={tokenTo} setToken={setTokenTo} />
+      <SelectToken token={tokenTo} setToken={setTokenTo} otherTokens={tokenFrom ? [tokenFrom] : []} />
     </Group>
   );
 };

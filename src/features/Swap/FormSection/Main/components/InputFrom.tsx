@@ -7,9 +7,13 @@ import { SelectToken } from "./SelectToken";
 
 export const InputFrom = () => {
   const [value, setValue] = useValue((state) => [state.valueFrom, state.setValueFrom]);
-  const [token, setToken] = useSelectedToken((state) => [state.currencyFrom, state.setCurrencyFrom]);
+  const [tokenFrom, setTokenFrom, tokenTo] = useSelectedToken((state) => [
+    state.currencyFrom,
+    state.setCurrencyFrom,
+    state.currencyTo,
+  ]);
 
-  const tokenPrice = useMemo(() => token?.current_price || 1, [token?.current_price]);
+  const tokenPrice = useMemo(() => tokenFrom?.current_price || 1, [tokenFrom?.current_price]);
 
   return (
     <Group spacing={8}>
@@ -26,7 +30,7 @@ export const InputFrom = () => {
         ~{formatPrice(tokenPrice)}
       </Text>
 
-      <SelectToken token={token} setToken={setToken} />
+      <SelectToken token={tokenFrom} setToken={setTokenFrom} otherTokens={tokenTo ? [tokenTo] : []} />
     </Group>
   );
 };

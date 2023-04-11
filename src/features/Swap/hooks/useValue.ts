@@ -9,7 +9,7 @@ type Action = {
 };
 
 export const useValue = create<State & Action>((set) => ({
-  valueFrom: "",
+  valueFrom: "1",
 
   setValueFrom: (valueFrom) => set(() => ({ valueFrom })),
 }));

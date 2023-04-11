@@ -2,7 +2,7 @@ import { Box, Flex } from "@mantine/core";
 import { type NextPage } from "next";
 import { useCallback, useEffect } from "react";
 import { Page, Section } from "~/components";
-import { FormSection, useSelectedToken, useTokenList } from "~/features/Swap";
+import { ChartSection, FormSection, useSelectedToken, useTokenList } from "~/features/Swap";
 import { getAllCurrencies } from "~/helpers/coingecko";
 
 const Swap: NextPage = () => {
@@ -29,9 +29,13 @@ const Swap: NextPage = () => {
   return (
     <Page visibleGalaxy={false}>
       <Section size={1450}>
-        <Flex>
+        <Flex gap={{ base: 50 }}>
           <Box w={450}>
             <FormSection />
+          </Box>
+
+          <Box sx={{ flex: 1 }}>
+            <ChartSection />
           </Box>
         </Flex>
       </Section>
