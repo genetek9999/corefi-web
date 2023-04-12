@@ -1,7 +1,7 @@
 import { Box } from "@mantine/core";
 import React from "react";
 
-import { Chart, Toolbar, Topbar, TradingViewWidget } from "./components";
+import { Chart, Toolbar, Topbar } from "./components";
 
 export const MarketChart = () => {
   return (
@@ -10,9 +10,7 @@ export const MarketChart = () => {
 
       <Toolbar />
 
-      {/* <Chart /> */}
-
-      <TradingViewWidget />
+      <Chart />
     </Box>
   );
 };
