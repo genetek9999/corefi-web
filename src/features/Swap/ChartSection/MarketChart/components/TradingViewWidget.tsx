@@ -12,7 +12,7 @@ const AdvancedRealTimeChart = dynamic(
 
 export const TradingViewWidget: React.FC<AdvancedRealTimeChartProps> = ({ ...props }) => {
   return (
-    <Box h={450}>
+    <Box h={550}>
       <AdvancedRealTimeChart
         autosize
         theme="dark"

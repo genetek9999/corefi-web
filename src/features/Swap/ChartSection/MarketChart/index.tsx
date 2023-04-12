@@ -8,7 +8,7 @@ export const MarketChart = () => {
     <Box>
       <Topbar />
 
-      <Toolbar />
+      {/* <Toolbar /> */}
 
       <Chart />
     </Box>
