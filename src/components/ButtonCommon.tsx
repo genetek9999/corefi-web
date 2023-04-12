@@ -60,7 +60,7 @@ const sxButton = (_bg: SystemProp<DefaultMantineColor> | undefined, sx: Sx): Sx 
 
       transition: "all 0.15s ease-in-out",
       "&:not([data-disabled])": theme.fn.hover({
-        backgroundColor: theme.fn.darken(bg, 0.05),
+        // backgroundColor: theme.fn.darken(bg, 0.05),
       }) as CSSObject,
       ...sx,
     });
