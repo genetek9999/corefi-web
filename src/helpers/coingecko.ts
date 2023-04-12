@@ -35,10 +35,22 @@ export type PropsCurrency = {
   roi: IRoi | null;
 };
 
+interface IMarketPrices {
+  prices: number[][];
+}
+
 export const getAllCurrencies = async (ids = "bitcoin,ethereum,binancecoin,binance-usd,tether") => {
   const api = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}`;
 
   const res = await axios.get<PropsCurrency[]>(api);
 
   return res.data;
+};
+
+export const getMarketChartRange = async (id: string, fromUnix: number, toUnix: number) => {
+  const api = `https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=${fromUnix}&to=${toUnix}`;
+
+  const res = await axios.get<IMarketPrices>(api);
+
+  return res.data.prices;
 };

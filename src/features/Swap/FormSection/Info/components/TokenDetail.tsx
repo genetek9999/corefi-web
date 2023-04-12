@@ -36,9 +36,9 @@ export const TokenDetail = ({ token }: { token?: PropsCurrency }) => {
 
       <RowData label="Total Supply" value={formatPrice(token?.total_supply)} />
 
-      <CustomDivider />
+      {/* <CustomDivider />
 
-      <RowData label="Contract Address" value="" />
+      <RowData label="Contract Address" value="" /> */}
     </>
   );
 };

@@ -2,7 +2,7 @@ import { Group, Text } from "@mantine/core";
 import React from "react";
 import { colors } from "~/constants";
 
-import { ButtonInfo, ButtonSettings, ButtonShare, ButtonTutorial } from "./components";
+import { ButtonInfo, ButtonTutorial } from "./components";
 
 export const Topbar = () => {
   return (
@@ -15,10 +15,6 @@ export const Topbar = () => {
         <ButtonTutorial />
 
         <ButtonInfo />
-
-        <ButtonShare />
-
-        <ButtonSettings />
       </Group>
     </Group>
   );
