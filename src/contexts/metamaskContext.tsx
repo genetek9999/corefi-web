@@ -33,6 +33,7 @@ interface IMetamaskContext {
   connect: () => void;
   isValidating: boolean;
   isCorrectChain: boolean;
+  setupDefaultNetwork: () => Promise<void>;
 }
 
 type PropsProvider = { children: React.ReactNode };
@@ -42,6 +43,7 @@ export const MetamaskContext = createContext<IMetamaskContext>({
   connect: () => undefined,
   isValidating: true,
   isCorrectChain: false,
+  setupDefaultNetwork: () => Promise.resolve(),
 });
 
 export const useMetamask = () => useContext(MetamaskContext);
@@ -62,7 +64,7 @@ export const MetamaskProvider: React.FC<PropsProvider> = ({ children }) => {
     startAccountListener(setAddress, handleChangeAccountFailed);
   }, []);
 
-  const setupDefaulNetwork = useCallback(async () => {
+  const setupDefaultNetwork = useCallback(async () => {
     if (data.chainId) {
       try {
         await switchChain(data.chainId);
@@ -89,19 +91,19 @@ export const MetamaskProvider: React.FC<PropsProvider> = ({ children }) => {
       setIsValidating(false);
 
       if (chainId.toString() !== data.chainId) {
-        await setupDefaulNetwork();
+        await setupDefaultNetwork();
       }
     },
-    [setupDefaulNetwork, startAllListeners],
+    [setupDefaultNetwork, startAllListeners],
   );
 
   const initData = useCallback(async () => {
-    console.log("Inititalize data...");
+    console.log("Initialize data...");
 
     try {
       await updateInfo(getConnectedAccount);
     } catch (error) {
-      console.log("ERROR - Inititalize data:", error);
+      console.log("ERROR - Initialize data:", error);
 
       setIsValidating(false);
     }
@@ -144,10 +146,10 @@ export const MetamaskProvider: React.FC<PropsProvider> = ({ children }) => {
       connect,
       chain,
       isValidating,
-      setupDefaulNetwork,
+      setupDefaultNetwork,
       isCorrectChain,
     }),
-    [address, chain, connect, isCorrectChain, isValidating, setupDefaulNetwork],
+    [address, chain, connect, isCorrectChain, isValidating, setupDefaultNetwork],
   );
 
   return <MetamaskContext.Provider value={value}>{children}</MetamaskContext.Provider>;

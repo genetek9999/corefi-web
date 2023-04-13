@@ -8,6 +8,8 @@ import IconSettings from "./IconSettings.svg";
 import IconSwap2 from "./IconSwap2.svg";
 import IconSwap from "./IconSwap.svg";
 import Logo from "./Logo.svg";
+import LogoTextHorizontal from "./LogoTextHorizontal.svg";
+import LogoTextVertical from "./LogoTextVertical.svg";
 import Mission1 from "./Mission1.svg";
 import Mission2 from "./Mission2.svg";
 import Mission3 from "./Mission3.svg";
@@ -16,10 +18,12 @@ import Mission5 from "./Mission5.svg";
 import Mission6 from "./Mission6.svg";
 
 export {
+  LogoTextVertical,
+  Logo,
   IconSettings,
   IconSwap,
   IconSwap2,
-  Logo,
+  LogoTextHorizontal,
   Ad1,
   Ad2,
   Ad3,

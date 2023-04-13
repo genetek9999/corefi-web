@@ -7,7 +7,7 @@ export const shortenWalletAddress = (address: string) => {
   return `${firstPart}...${lastPart}`;
 };
 
-export const formatPrice = (data: number | string | undefined, currency = "$") => {
+export const formatPrice = (data: number | string | undefined, currency: string | undefined | null = "$") => {
   let stringData = "";
 
   if (!data) stringData = "0";
