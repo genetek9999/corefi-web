@@ -4,6 +4,10 @@ import Ad3 from "./Ad3.svg";
 import Ad4 from "./Ad4.svg";
 import Ad5 from "./Ad5.svg";
 import Ad6 from "./Ad6.svg";
+import IconMenuDao from "./IconMenuDao.svg";
+import IconMenuLiquidity from "./IconMenuLiquidity.svg";
+import IconMenuStaking from "./IconMenuStaking.svg";
+import IconMenuSwap from "./IconMenuSwap.svg";
 import IconSettings from "./IconSettings.svg";
 import IconSwap2 from "./IconSwap2.svg";
 import IconSwap from "./IconSwap.svg";
@@ -18,6 +22,10 @@ import Mission5 from "./Mission5.svg";
 import Mission6 from "./Mission6.svg";
 
 export {
+  IconMenuDao,
+  IconMenuLiquidity,
+  IconMenuStaking,
+  IconMenuSwap,
   LogoTextVertical,
   Logo,
   IconSettings,

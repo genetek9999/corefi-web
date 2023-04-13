@@ -2,14 +2,14 @@ import { Box, Group, Text } from "@mantine/core";
 import { nanoid } from "nanoid";
 import React from "react";
 import { HybridLink, Section } from "~/components";
-import { menuFeatuerHeader } from "~/constants";
+import { menuFeatureHeader } from "~/constants";
 
 export const FeatureHeader = () => {
   return (
     <Section fluid py={25} bg="rgba(255, 255, 255, 0.03);">
       <Box>
         <Group>
-          {menuFeatuerHeader.map((item) => (
+          {menuFeatureHeader.map((item) => (
             <MenuItem key={nanoid()} {...item} />
           ))}
         </Group>

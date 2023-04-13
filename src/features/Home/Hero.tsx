@@ -37,14 +37,14 @@ export const Hero = () => {
             </Title>
 
             <Text fw={400} ta={"center"} maw={750} fz={20}>
-              Be a DeFi Master with CoreFi. Swap, Earn, Stake, Yeild Farming, all in one decentralized, community driven
+              Be a DeFi Master with CoreFi. Swap, Earn, Stake, Yield Farming, all in one decentralized, community driven
               platform. Welcome home to DeFi.
             </Text>
 
             <ButtonCommon
               mt={30}
               bg={
-                "radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
+                "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
               }
               sx={{
                 border: "1px solid rgba(255, 255, 255, 0.1)",

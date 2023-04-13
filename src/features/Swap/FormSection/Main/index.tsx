@@ -57,6 +57,7 @@ export const Main = () => {
         tt="capitalize"
         mb={20}
         onClick={handleClickSubmit}
+        darkenHover
       >
         {!address ? "Connect wallet" : "Swap"}
       </ButtonCommon>

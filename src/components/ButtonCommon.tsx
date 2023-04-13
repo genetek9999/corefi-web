@@ -15,12 +15,20 @@ import { HybridLink } from "./HybridLink";
 
 export type ButtonCommonProps = PolymorphicComponentProps<"button", ButtonProps> & {
   href?: string;
+  darkenHover?: boolean;
 };
 
-export const ButtonCommon: React.FC<ButtonCommonProps> = ({ children, href = "", bg, sx, ...props }) => {
+export const ButtonCommon: React.FC<ButtonCommonProps> = ({
+  children,
+  href = "",
+  bg,
+  sx,
+  darkenHover = false,
+  ...props
+}) => {
   const ButtonComponent = () => (
     <Button
-      sx={sxButton(bg, sx as Sx)}
+      sx={sxButton(bg, sx as Sx, darkenHover)}
       bg={bg}
       fz={{ base: 14 }}
       px={30}
@@ -47,21 +55,23 @@ export const ButtonCommon: React.FC<ButtonCommonProps> = ({ children, href = "",
   );
 };
 
-const sxButton = (_bg: SystemProp<DefaultMantineColor> | undefined, sx: Sx): Sx => {
+const sxButton = (_bg: SystemProp<DefaultMantineColor> | undefined, sx: Sx, darkenHover: boolean): Sx => {
   const defaultProps: Sx = {
     borderWidth: 2,
   };
 
-  if (_bg) {
+  if (_bg && darkenHover) {
     const bg = _bg as string;
 
     return (theme: MantineTheme) => ({
       ...defaultProps,
 
       transition: "all 0.15s ease-in-out",
+
       "&:not([data-disabled])": theme.fn.hover({
-        // backgroundColor: theme.fn.darken(bg, 0.05),
+        backgroundColor: theme.fn.darken(bg, 0.05),
       }) as CSSObject,
+
       ...sx,
     });
   }
