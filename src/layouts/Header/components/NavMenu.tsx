@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import React, { useMemo } from "react";
 import { BsCaretDownFill } from "react-icons/bs";
 import { HybridLink } from "~/components";
-import { menuFeatureHeader, menuMainHeader } from "~/constants";
+import { colors, menuFeatureHeader, menuMainHeader } from "~/constants";
 
 type Props = BoxProps & {
   variant?: "horizontal" | "vertical";
@@ -43,11 +43,12 @@ export const NavMenu: React.FC<Props> = ({ variant = "horizontal", ...props }) =
 
 type MenuItemProps = TextProps & {
   isVertical?: boolean;
+  isSubMenuItem?: boolean;
   link: string;
   label: string;
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ isVertical = false, link, label, ...props }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ isVertical = false, isSubMenuItem = false, link, label, ...props }) => {
   const isActive = useMemo(() => window.location.pathname === link, [link]);
 
   return (
@@ -60,6 +61,17 @@ const MenuItem: React.FC<MenuItemProps> = ({ isVertical = false, link, label, ..
               bg: isActive ? "rgba(255,255,255,0.1)" : "transparent",
             }
           : {})}
+        className={isActive ? "active" : ""}
+        sx={
+          !isSubMenuItem
+            ? {
+                transition: "all 0.15s ease-in-out",
+                "&:hover, &.active": {
+                  color: colors.PRIMARY_COLOR,
+                },
+              }
+            : {}
+        }
       >
         <Text fw={500} tt="capitalize" {...props}>
           {label}
@@ -105,7 +117,7 @@ const SubMenu: React.FC<SubMenuProps> = ({ isVertical = false, label, withIcon, 
             }}
           >
             {menu.map((item) => (
-              <MenuItem key={nanoid()} {...item} px={50} py={15} />
+              <MenuItem key={nanoid()} {...item} px={50} py={15} isSubMenuItem />
             ))}
           </Accordion.Panel>
         </Accordion.Item>
@@ -116,7 +128,17 @@ const SubMenu: React.FC<SubMenuProps> = ({ isVertical = false, label, withIcon, 
   return (
     <Menu shadow="md" width={300} trigger="hover">
       <Menu.Target>
-        <Group spacing={7} sx={{ cursor: "pointer" }}>
+        <Group
+          spacing={7}
+          sx={{
+            cursor: "pointer",
+            ...(isActive
+              ? {
+                  "*": { color: colors.PRIMARY_COLOR },
+                }
+              : {}),
+          }}
+        >
           <Text fw={500} tt="capitalize">
             {label}
           </Text>
@@ -158,7 +180,7 @@ const SubMenu: React.FC<SubMenuProps> = ({ isVertical = false, label, withIcon, 
 
           return (
             <Menu.Item key={nanoid()} px={16} py={20} sx={{ borderRadius: 12 }}>
-              <MenuItem {...item} />
+              <MenuItem {...item} isSubMenuItem />
             </Menu.Item>
           );
         })}
