@@ -6,7 +6,7 @@ import { BoxDisplay, SubTopbar } from "../components";
 import { TokenDetail, TokenSegmented } from "./components";
 
 export const Info = () => {
-  const [tokenFrom, tokenTo] = useSelectedToken((state) => [state.currencyFrom, state.currencyTo]);
+  const [tokenFrom] = useSelectedToken((state) => [state.currencyFrom, state.currencyTo]);
   const [currentToken, setCurrentToken] = useState(tokenFrom);
 
   return (

@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import { Line, Mission1 } from "~/assets/vectors";
 import { Section } from "~/components";
 import { MissionContent } from "~/constants/MissionContent";
-import { type MissionProbs } from "~/type";
+import { type MissionProps } from "~/type";
 
 import { Mission } from "./Components/Mission";
 
 export const OurMission = () => {
-  const [currentTab, setCurrentTab] = useState<MissionProbs>();
+  const [currentTab, setCurrentTab] = useState<MissionProps>();
   // const [active, setActive] = useState(false);
 
   console.log(currentTab, "test");

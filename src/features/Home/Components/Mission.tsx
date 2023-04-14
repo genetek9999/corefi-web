@@ -1,11 +1,10 @@
-import { AspectRatio, Box, Container, type ContainerProps, Flex, Text, Title } from "@mantine/core";
+import { AspectRatio, Flex, type FlexProps, Text } from "@mantine/core";
 import React from "react";
-import { Mission1 } from "~/assets/vectors";
-import { type MissionProbs } from "~/type";
+import { type MissionProps } from "~/type";
 
-type Props = {
+type Props = FlexProps & {
   test?: string;
-  currentTab: MissionProbs;
+  currentTab: MissionProps;
 };
 
 export const Mission: React.FC<Props> = ({ currentTab, ...props }) => {
@@ -18,6 +17,7 @@ export const Mission: React.FC<Props> = ({ currentTab, ...props }) => {
       direction={"column"}
       bg={"linear-gradient(180deg, rgba(105, 70, 226, 0.1) 0%, rgba(105, 70, 226, 0) 100%)"}
       gap={60}
+      {...props}
     >
       <AspectRatio w={"100%"} ratio={482 / 330}>
         {currentTab.svg}

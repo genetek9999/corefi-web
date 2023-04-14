@@ -1,4 +1,4 @@
-import { Button, Input, TextInput, Title } from "@mantine/core";
+import { TextInput, Title } from "@mantine/core";
 import React, { useState } from "react";
 import { ButtonCommon } from "~/components";
 import { colors } from "~/constants";
