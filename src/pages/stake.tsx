@@ -6,7 +6,7 @@ import { Information, Main, Overview, Remittances, TotalStaked } from "~/feature
 const Stake: NextPage = () => {
   return (
     <Page>
-      <Section size={1250} py={{ base: 50, sm: 150 }}>
+      <Section size={1250} py={{ base: 100, sm: 150 }}>
         <Title ta="center" fz={{ base: 40, sm: 64 }} mb={15}>
           CoreFi Staking
         </Title>

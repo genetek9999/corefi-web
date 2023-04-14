@@ -37,7 +37,7 @@ export const ClaimSection = () => {
       p={25}
     >
       <Grid>
-        <Grid.Col span={6}>
+        <Grid.Col span={12} sm={6}>
           <Text mb="xs" fw={600}>
             Staked Balance
           </Text>
@@ -49,7 +49,7 @@ export const ClaimSection = () => {
           </Group>
         </Grid.Col>
 
-        <Grid.Col span={6}>
+        <Grid.Col span={12} sm={6}>
           <Text mb="xs" fw={600}>
             Pending Rewards
           </Text>

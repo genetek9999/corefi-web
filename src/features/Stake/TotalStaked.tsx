@@ -1,6 +1,6 @@
 import { Box, Text, Title } from "@mantine/core";
 import React from "react";
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, ResponsiveContainer, Tooltip } from "recharts";
 import { colors } from "~/constants";
 import { formatPrice } from "~/utils";
 

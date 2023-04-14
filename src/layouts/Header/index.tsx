@@ -4,7 +4,6 @@ import { paths } from "~/constants";
 import { FeatureHeader } from "./FeatureHeader";
 import { MainHeader } from "./MainHeader";
 
-// const featurePaths = [paths.STAKE, paths.SWAP, paths.DAO, paths.CAMPAIGNS];
 const featurePaths = [paths.SWAP];
 
 export const Header = () => {

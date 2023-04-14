@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Group, Text, Title } from "@mantine/core";
 import { type NextPage } from "next";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Page, Section } from "~/components";
 import { TokenProvider } from "~/contexts/tokenContext";
 import { ButtonClaim, ButtonStake, EstimatedInfo, InputAmount, SelectType, TextBalance } from "~/features/Staking";

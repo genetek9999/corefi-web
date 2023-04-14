@@ -1,3 +1,4 @@
+import { BsDiscord, BsMedium, BsTelegram, BsTwitter, BsYoutube } from "react-icons/bs";
 import { IconMenuDao, IconMenuLiquidity, IconMenuStaking, IconMenuSwap } from "~/assets/vectors";
 
 import { links, paths } from "./links";
@@ -21,7 +22,7 @@ export const menuMainHeader = [
         link: paths.STAKE,
       },
       {
-        label: "Liquidity Provider",
+        label: "Liquidity Vaults",
         desc: "Investing in Web3 builders",
         icon: <IconMenuLiquidity />,
         link: paths.LIQUIDITY_VAULTS,
@@ -85,13 +86,6 @@ export const menuMainHeader = [
   },
 ];
 
-export const menuMainFooter = [
-  {
-    label: "",
-    link: "",
-  },
-];
-
 export const menuFeatureHeader = [
   {
     label: "Swap",
@@ -106,7 +100,7 @@ export const menuFeatureHeader = [
     menu: [],
   },
   {
-    label: "Liquidity provider",
+    label: "Liquidity Vaults",
     link: paths.LIQUIDITY_VAULTS,
     withIcon: false,
     menu: [],
@@ -116,5 +110,82 @@ export const menuFeatureHeader = [
     link: paths.DAO,
     withIcon: false,
     menu: [],
+  },
+];
+
+export const menuMainFooter = [
+  {
+    category: "Platform",
+    menu: [
+      {
+        label: "About Us",
+        link: paths.ABOUT,
+      },
+      {
+        label: "Whitepaper",
+        link: links.WHITEPAPER,
+      },
+      {
+        label: "Campaign",
+        link: links.CAMPAIGN,
+      },
+    ],
+  },
+  {
+    category: "DApps",
+    menu: [
+      {
+        label: "CoreSwap",
+        link: paths.ABOUT,
+      },
+      {
+        label: "Core Staking",
+        link: paths.STAKE,
+      },
+      {
+        label: "Liquidity Vaults",
+        link: paths.LIQUIDITY_VAULTS,
+      },
+      {
+        label: "CoreDAO",
+        link: paths.DAO,
+      },
+    ],
+  },
+  {
+    category: "Legals",
+    menu: [
+      {
+        label: "Term & Conditions",
+        link: "",
+      },
+      {
+        label: "Privacy Policy",
+        link: "",
+      },
+    ],
+  },
+];
+
+export const menuSocial = [
+  {
+    icon: <BsYoutube />,
+    link: links.YOUTUBE,
+  },
+  {
+    icon: <BsTwitter />,
+    link: links.TWITTER,
+  },
+  {
+    icon: <BsMedium />,
+    link: links.MEDIUM,
+  },
+  {
+    icon: <BsDiscord />,
+    link: links.DISCORD,
+  },
+  {
+    icon: <BsTelegram />,
+    link: links.TELEGRAM,
   },
 ];

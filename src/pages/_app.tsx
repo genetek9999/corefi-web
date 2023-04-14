@@ -10,16 +10,16 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
   return (
     <>
       <Head>
-        <title>Base T3 Mantine Web3</title>
-        <meta name="description" content="Base T3 Mantine Web3" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>CoreFi</title>
+        <meta name="description" content="Making deFi accessible to everyone" />
+        <link rel="icon" href="/favicon.png" />
         <meta property="og:image" content="/feature.jpg" />
-        <meta property="og:url" content="/" />
-        <meta property="og:title" content="Base T3 Mantine Web3" />
-        <meta property="og:image:alt" content="Base T3 Mantine Web3" />
-        <meta property="og:description" content="Base T3 Mantine Web3" />
+        <meta property="og:url" content="https://corefi.io" />
+        <meta property="og:title" content="CoreFi" />
+        <meta property="og:image:alt" content="Making deFi accessible to everyone" />
+        <meta property="og:description" content="Making deFi accessible to everyone" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Base T3 Mantine Web3" />
+        <meta property="og:site_name" content="CoreFi" />
       </Head>
 
       <ThemeProvider>

@@ -15,7 +15,7 @@ export interface ITimeRangeOption {
   desc: string;
   value: {
     amount: DurationInputArg1;
-    unit: DurationInputArg2;
+    unit: DurationInputArg2 | string;
   };
 }
 

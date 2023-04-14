@@ -5,7 +5,7 @@ export const paths = {
   STAKING: "/staking",
   ABOUT: "/about",
   SWAP: "/swap",
-  LIQUIDITY_VAULTS: "/liquidity-provider",
+  LIQUIDITY_VAULTS: "/liquidity-vaults",
   DAO: "/dao",
   STAKE: "/stake",
 };
@@ -17,4 +17,9 @@ export const links = {
   SAFU: "https://google.com",
   BLOG: "https://google.com",
   CAMPAIGN: "https://google.com",
+  YOUTUBE: "https://google.com",
+  MEDIUM: "https://google.com",
+  TWITTER: "https://google.com",
+  DISCORD: "https://google.com",
+  TELEGRAM: "https://google.com",
 };
