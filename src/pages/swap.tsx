@@ -29,8 +29,8 @@ const Swap: NextPage = () => {
   return (
     <Page visibleGalaxy={false}>
       <Section size={1450} py={{ base: 50, sm: 50 }} mih={{ lg: "84.5vh" }}>
-        <Flex gap={{ base: 50 }}>
-          <Box w={450}>
+        <Flex direction={{ base: "column", lg: "row" }} gap={{ base: 50 }}>
+          <Box w={{ lg: 450 }}>
             <FormSection />
           </Box>
 

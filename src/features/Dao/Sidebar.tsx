@@ -13,7 +13,7 @@ export const Sidebar = () => {
     <Box
       bg="linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.0224) 100%)"
       sx={{ borderRadius: 12 }}
-      w={250}
+      w={{ lg: 250 }}
     >
       <Center my={20}>
         <LogoBrand w={60} />

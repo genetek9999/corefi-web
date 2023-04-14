@@ -18,7 +18,12 @@ export const Proposals = () => {
           Proposals
         </Title>
 
-        <Group spacing={5} sx={{ border: "1px solid #ffffff25", borderRadius: 25 }} pl="xs">
+        <Group
+          spacing={5}
+          sx={{ border: "1px solid #ffffff25", borderRadius: 25 }}
+          pl="xs"
+          w={{ base: "100%", sm: "auto" }}
+        >
           <FiSearch size={18} />
 
           <Input variant="unstyled" placeholder="Search..." />

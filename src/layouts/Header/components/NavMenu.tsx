@@ -63,7 +63,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ isVertical = false, isSubMenuItem =
           : {})}
         className={isActive ? "active" : ""}
         sx={
-          !isSubMenuItem
+          !isSubMenuItem && !isVertical
             ? {
                 transition: "all 0.15s ease-in-out",
                 "&:hover, &.active": {
