@@ -1,10 +1,17 @@
 import { type NextPage } from "next";
-import { Page, Section } from "~/components";
+import { Page, Section, SpaceSection } from "~/components";
+import { Hero, Vaults } from "~/features/Liquidity";
 
 const LiquidityVaults: NextPage = () => {
   return (
     <Page>
-      <Section>DAO</Section>
+      <Section size={1200}>
+        <Hero />
+
+        <Vaults />
+
+        <SpaceSection />
+      </Section>
     </Page>
   );
 };
