@@ -70,7 +70,7 @@ const VaultItem: React.FC<VaultItemProps> = ({ desc, pair, status, tvl, used, ve
     p={{ base: 15, sm: 30 }}
     sx={{ borderRadius: 16, boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.05)" }}
     bg="linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.0144) 100%)"
-    mih={350}
+    mih={{ sm: 350 }}
     h="100%"
   >
     <Group spacing={8}>
