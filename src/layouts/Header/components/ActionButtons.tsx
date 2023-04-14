@@ -1,15 +1,15 @@
-import { Box, Group } from "@mantine/core";
+import { Box, Group, type GroupProps } from "@mantine/core";
 import React from "react";
 import { ButtonCommon } from "~/components";
 import { colors } from "~/constants";
 import { useMetamask } from "~/contexts";
 import { shortenWalletAddress } from "~/utils";
 
-export const ActionButtons = () => {
+export const ActionButtons: React.FC<GroupProps> = ({ ...props }) => {
   const { address, connect, setupDefaultNetwork } = useMetamask();
 
   return (
-    <Group spacing={10}>
+    <Group spacing={10} {...props}>
       <ButtonCommon
         variant="filled"
         bg={colors.PRIMARY_COLOR}

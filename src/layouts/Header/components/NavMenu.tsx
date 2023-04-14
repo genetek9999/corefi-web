@@ -1,12 +1,15 @@
-import { Box, type BoxProps, Flex, Group, Menu, Text, TextProps } from "@mantine/core";
+import { Accordion, Box, type BoxProps, Flex, Group, Menu, Text, type TextProps } from "@mantine/core";
 import { nanoid } from "nanoid";
 import React, { useMemo } from "react";
-import { BiDownArrow } from "react-icons/bi";
-import { BsCaretDown, BsCaretDownFill, BsMenuDown } from "react-icons/bs";
+import { BsCaretDownFill } from "react-icons/bs";
 import { HybridLink } from "~/components";
 import { menuFeatureHeader, menuMainHeader } from "~/constants";
 
-export const NavMenu: React.FC<BoxProps> = ({ ...props }) => {
+type Props = BoxProps & {
+  variant?: "horizontal" | "vertical";
+};
+
+export const NavMenu: React.FC<Props> = ({ variant = "horizontal", ...props }) => {
   const { pathname, host } = window.location;
 
   const menu = useMemo(() => {
@@ -19,14 +22,18 @@ export const NavMenu: React.FC<BoxProps> = ({ ...props }) => {
 
   return (
     <Box {...props}>
-      <Flex align="center" gap={{ base: 20, sm: 30 }}>
+      <Flex
+        direction={variant === "horizontal" ? "row" : "column"}
+        align={variant === "horizontal" ? "center" : "stretch"}
+        gap={variant === "horizontal" ? { base: 20, sm: 30 } : 2}
+      >
         {menu.map((item) => {
           if (item.link) {
-            return <MenuItem key={nanoid()} {...item} />;
+            return <MenuItem key={nanoid()} isVertical={variant === "vertical"} {...item} />;
           }
 
           if (item.menu.length) {
-            return <SubMenu key={nanoid()} {...item} />;
+            return <SubMenu key={nanoid()} isVertical={variant === "vertical"} {...item} />;
           }
         })}
       </Flex>
@@ -35,19 +42,35 @@ export const NavMenu: React.FC<BoxProps> = ({ ...props }) => {
 };
 
 type MenuItemProps = TextProps & {
+  isVertical?: boolean;
   link: string;
   label: string;
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ link, label, ...props }) => (
-  <HybridLink key={nanoid()} href={link}>
-    <Text fw={500} tt="capitalize" {...props}>
-      {label}
-    </Text>
-  </HybridLink>
-);
+const MenuItem: React.FC<MenuItemProps> = ({ isVertical = false, link, label, ...props }) => {
+  const isActive = useMemo(() => window.location.pathname === link, [link]);
+
+  return (
+    <HybridLink key={nanoid()} href={link}>
+      <Box
+        {...(isVertical
+          ? {
+              px: 25,
+              py: 15,
+              bg: isActive ? "rgba(255,255,255,0.1)" : "transparent",
+            }
+          : {})}
+      >
+        <Text fw={500} tt="capitalize" {...props}>
+          {label}
+        </Text>
+      </Box>
+    </HybridLink>
+  );
+};
 
 type SubMenuProps = {
+  isVertical?: boolean;
   label: string;
   withIcon: boolean;
   menu: (MenuItemProps & {
@@ -56,7 +79,40 @@ type SubMenuProps = {
   })[];
 };
 
-const SubMenu: React.FC<SubMenuProps> = ({ label, withIcon, menu }) => {
+const SubMenu: React.FC<SubMenuProps> = ({ isVertical = false, label, withIcon, menu }) => {
+  const isActive = useMemo(() => menu.some((item) => window.location.pathname === item.link), [menu]);
+
+  if (isVertical) {
+    return (
+      <Accordion variant="filled" radius="xs" defaultValue="0">
+        <Accordion.Item
+          value="0"
+          sx={{
+            "&[data-active]": {
+              backgroundColor: "transparent",
+            },
+          }}
+        >
+          <Accordion.Control c="#fff" fw={500} px={25} bg={isActive ? "rgba(255,255,255,0.1)" : "transparent"}>
+            {label}
+          </Accordion.Control>
+
+          <Accordion.Panel
+            sx={{
+              ".mantine-Accordion-content": {
+                padding: 0,
+              },
+            }}
+          >
+            {menu.map((item) => (
+              <MenuItem key={nanoid()} {...item} px={50} py={15} />
+            ))}
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
+    );
+  }
+
   return (
     <Menu shadow="md" width={300} trigger="hover">
       <Menu.Target>
@@ -72,7 +128,7 @@ const SubMenu: React.FC<SubMenuProps> = ({ label, withIcon, menu }) => {
       <Menu.Dropdown
         px={24}
         py={20}
-        sx={{ borderRadius: 20, backdropFilter: "blur(6px)" }}
+        sx={{ borderRadius: 20, backdropFilter: "blur(20px)" }}
         bg="linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.0152) 100%)"
       >
         {menu.map((item) => {

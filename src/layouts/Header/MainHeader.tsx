@@ -2,7 +2,7 @@ import { Box, Flex } from "@mantine/core";
 import React from "react";
 import { LogoBrand, Section } from "~/components";
 
-import { ActionButtons, NavMenu } from "./components";
+import { ActionButtons, BurgerButton, NavMenu } from "./components";
 
 export const MainHeader = () => {
   return (
@@ -12,11 +12,15 @@ export const MainHeader = () => {
           <LogoBrand variant="text-horizontal" />
         </Box>
 
-        <NavMenu display={{ base: "none", lg: "block" }} />
+        <NavMenu display={{ base: "none", md: "block" }} />
 
         <Box sx={{ flex: 1 }}>
-          <Flex justify="end">
-            <ActionButtons />
+          <Flex justify="end" align="center" gap={20}>
+            <Box display={{ base: "none", sm: "block" }}>
+              <ActionButtons />
+            </Box>
+
+            <BurgerButton display={{ md: "none" }} />
           </Flex>
         </Box>
       </Flex>
