@@ -21,8 +21,14 @@ import Mission3 from "./Mission3.svg";
 import Mission4 from "./Mission4.svg";
 import Mission5 from "./Mission5.svg";
 import Mission6 from "./Mission6.svg";
+import Offer1 from "./Offer1.svg";
+import Offer2 from "./Offer2.svg";
+import Offer3 from "./Offer3.svg";
 
 export {
+  Offer1,
+  Offer2,
+  Offer3,
   Line,
   IconMenuDao,
   IconMenuLiquidity,
