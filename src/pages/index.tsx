@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import { Page, Section, SpaceSection } from "~/components";
 import { Hero, OurMission } from "~/features/Home";
+import { Offers } from "~/features/Home/Offers";
 
 const Home: NextPage = () => {
   return (
@@ -8,6 +9,8 @@ const Home: NextPage = () => {
       <Hero />
 
       <OurMission />
+
+      <Offers />
 
       <Section size={1150}>
         <SpaceSection />
