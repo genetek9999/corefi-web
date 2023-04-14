@@ -1,7 +1,7 @@
 import { AspectRatio, BackgroundImage, Box, Flex, Text, Title } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
-import { HeroBg, HomeBg2, HomeBg2Mb, VideoExample } from "~/assets/images";
+import { HeroBg, HomeBg2, HomeBg2Mb, VidMobile, VideoExample } from "~/assets/images";
 import { ButtonCommon, Section } from "~/components";
 import { AdItem } from "~/constants/AdItem";
 
@@ -53,10 +53,14 @@ export const Hero = () => {
               Launch DApp
             </ButtonCommon>
 
-            <Box pt={88} w={"100%"} h={{ base: 600, sm: 600 }}>
+            <Box pt={88} w={"100%"} h={{ base: 700, sm: 600 }}>
               {/* thay video vao day */}
-              <AspectRatio maw={1200} mx={"auto"} ratio={1200 / 651}>
+              <AspectRatio display={{ base: "none", sm: "block" }} maw={1200} mx={"auto"} ratio={1200 / 651}>
                 <Image src={VideoExample} alt="" fill />
+              </AspectRatio>
+
+              <AspectRatio display={{ base: "block", sm: "none" }} maw={1200} mx={"auto"} ratio={750 / 1040}>
+                <Image src={VidMobile} alt="" fill />
               </AspectRatio>
 
               <Flex

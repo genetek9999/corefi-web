@@ -11,6 +11,7 @@ import IconMenuSwap from "./IconMenuSwap.svg";
 import IconSettings from "./IconSettings.svg";
 import IconSwap2 from "./IconSwap2.svg";
 import IconSwap from "./IconSwap.svg";
+import Line from "./Line.svg";
 import Logo from "./Logo.svg";
 import LogoTextHorizontal from "./LogoTextHorizontal.svg";
 import LogoTextVertical from "./LogoTextVertical.svg";
@@ -22,6 +23,7 @@ import Mission5 from "./Mission5.svg";
 import Mission6 from "./Mission6.svg";
 
 export {
+  Line,
   IconMenuDao,
   IconMenuLiquidity,
   IconMenuStaking,
