@@ -3,8 +3,6 @@ import React from "react";
 
 import { Info } from "./Info";
 import { Main } from "./Main";
-import { Searchbar } from "./Searchbar";
-import { Settings } from "./Settings";
 import { Topbar } from "./Topbar";
 
 export const FormSection = () => {
@@ -20,8 +18,6 @@ export const FormSection = () => {
         <Main />
 
         <Info />
-
-        <Settings />
       </Box>
     </Box>
   );
