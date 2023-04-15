@@ -3,7 +3,9 @@ import { nanoid } from "nanoid";
 import React, { useState } from "react";
 import { Line, Mission1 } from "~/assets/vectors";
 import { Section } from "~/components";
-import { MissionContent } from "~/constants/MissionContent";
+import { MissionContent } from "~/constants/HomeContent";
+// import { type MissionProbs } from "~/type";
+// import { MissionContent } from "~/constants/MissionContent";
 import { type MissionProps } from "~/type";
 
 import { Mission } from "./Components/Mission";
