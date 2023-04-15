@@ -1,5 +1,5 @@
 import { deploy } from "./deploy";
 
 (function () {
-  void deploy("Token", "Jaycoin", "JYC");
+  void deploy("Token", "Kaycoin", "KYC");
 })();

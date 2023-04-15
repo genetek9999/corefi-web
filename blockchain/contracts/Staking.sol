@@ -165,11 +165,16 @@ interface IERC20 {
 }
 
 contract Staking is Ownable, ReentrancyGuard {
+    uint256 public stakeFee = 1; // stake fee by %
+    uint256 public unstakeFee = 20; // unstake fee by %
+
+    // struct of option to stake
     struct Stake {
         uint256 duration;
-        uint256 apy; // 1% == 1000
+        uint256 apy; // 1% == 100
     }
 
+    // struct of staking by user
     struct UserStake {
         address staker;
         uint256 stakeId;
@@ -179,26 +184,26 @@ contract Staking is Ownable, ReentrancyGuard {
         bool claimed;
     }
 
-    event NewStake(uint256 indexed stakeId);
-    event UpdatedStake(uint256 indexed stakeId);
-    event NewStaking(uint256 indexed id, address indexed stakinger);
-    event Claimed(uint256 indexed id);
+    event NewStake(uint256 indexed stakeId); // event add new option stake
+    event UpdatedStake(uint256 indexed stakeId); // event update option stake
+    event NewStaking(uint256 indexed id, address indexed stakinger); // event staking by user
+    event Claimed(uint256 indexed id); // event claim by user
 
-    IERC20 public tokenStaking;
+    IERC20 public tokenStaking; // token used for staking and claiming
 
-    uint256 public constant WAITING_TIME_CLAIM = 2 minutes; // wating claim if not enough staking time
-    uint256 public totalStake;
-    mapping(uint256 => Stake) public stakes;
-    uint256 public totalUserStake;
-    mapping(uint256 => UserStake) public userStakes;
+    uint256 public constant WAITING_TIME_TO_UNSTAKE = 2 minutes; // waiting claim if not enough staking time
+    uint256 public totalStake; // total option stake
+    mapping(uint256 => Stake) public stakes; // map (option stake) id to option stake
+    uint256 public totalUserStake; // total staking by user
+    mapping(uint256 => UserStake) public userStakes; // map (staking by user) id to staking by user
 
-    // User address => rewards claimed
-    mapping(address => uint256) public earned;
-    // Total staked
-    uint256 public totalSupply;
-    // User address => staked amount
-    mapping(address => uint256) public balanceOf;
+    mapping(address => uint256) public earned; // mapping user address to rewards they will claim
 
+    uint256 public totalStakedAmount; // total staking amount by users
+
+    mapping(address => uint256) public balanceOf; // mapping user address to amount they staked before
+
+    // constructor with param is token used for staking and claiming
     constructor(address _stakingToken) {
         tokenStaking = IERC20(_stakingToken);
     }
@@ -233,57 +238,123 @@ contract Staking is Ownable, ReentrancyGuard {
         tokenStaking = IERC20(_tokenStaking);
     }
 
-    function withdraw() external onlyOwner {
+    function updateStakeFee(uint256 _newStakeFee) public onlyOwner {
+        require(_newStakeFee <= 100, "Invalid fee!");
+
+        stakeFee = _newStakeFee;
+    }
+
+    function updateUnstakeFee(uint256 _newUnstakeFee) public onlyOwner {
+        require(_newUnstakeFee <= 100, "Invalid fee!");
+
+        unstakeFee = _newUnstakeFee;
+    }
+
+    // withdraw all tokens from contract to owner
+    function withdrawAll() external onlyOwner {
         uint256 balance = tokenStaking.balanceOf(address(this));
         tokenStaking.transfer(msg.sender, balance);
     }
 
-    function pendingReward(uint256 _id) public view returns (uint256) {
-        UserStake memory uStake_ = userStakes[_id];
-        if (uStake_.claimed) return 0;
-        Stake memory stake_ = stakes[uStake_.stakeId];
-        uint256 time_ = block.timestamp < uStake_.start + stake_.duration
-            ? block.timestamp - uStake_.start
-            : stake_.duration;
-        return (uStake_.amount * stake_.apy * time_) / (1e5 * 365 days);
+    // withdraw an amount of tokens from contract to owner
+    function withdraw(uint256 _amount) external onlyOwner {
+        uint256 balance = tokenStaking.balanceOf(address(this));
+
+        require(_amount < balance, "Invalid amount!");
+
+        tokenStaking.transfer(msg.sender, _amount);
     }
 
+    // stake tokens by user
+    // _stakeId: option stake id
+    // _amount: amount used to stake
     function stake(uint256 _stakeId, uint256 _amount) external stakeExists(_stakeId) {
         address sender = _msgSender();
-        require(_amount > 0, "amount = 0");
+
+        require(_amount > 0, "Invalid amount!");
+
         require(tokenStaking.transferFrom(sender, address(this), _amount));
+
+        uint256 realAmount = _amount * (1 - (stakeFee / 100));
+
+        // save to the userStakes mapping with new value (without claimed and claimTime => claimed = false & claimTime = 0)
         userStakes[totalUserStake].staker = sender;
         userStakes[totalUserStake].stakeId = _stakeId;
-        userStakes[totalUserStake].amount = _amount;
+        userStakes[totalUserStake].amount = realAmount;
         userStakes[totalUserStake].start = block.timestamp;
+
         emit NewStaking(totalUserStake, sender);
+
         totalUserStake++;
-        totalSupply += _amount;
+        totalStakedAmount += realAmount;
     }
 
-    function claim(uint256 _id) external userStakeExists(_id) nonReentrant onlyOwner {
+    // claim or unstake tokens by user
+    function claim(uint256 _id) external userStakeExists(_id) nonReentrant {
         address sender = _msgSender();
-        UserStake memory uStake_ = userStakes[_id];
-        require(sender == uStake_.staker, "Unauthorized");
-        Stake memory stake_ = stakes[uStake_.stakeId];
-        require(!uStake_.claimed, "Stake is claimed");
 
-        if (userStakes[_id].claimTime == 0) {
-            // not trigger claim before staking end
+        // get data of the staking of user by that staking's id
+        UserStake memory uStake_ = userStakes[_id];
+
+        // if claimer address is not match staking's staker address => stop function
+        require(sender == uStake_.staker, "Unauthorized!");
+
+        // if that staking is claimed => stop function
+        require(!uStake_.claimed, "User has already claimed!");
+
+        // get info of staking's stake option
+        Stake memory stake_ = stakes[uStake_.stakeId];
+
+        // if user hasn't unstaked/claimed after he/she stakes
+        if (uStake_.claimTime == 0) {
+            // UNSTAKE: CALC WAITING TIME TO EXECUTE
             if (block.timestamp < uStake_.start + stake_.duration) {
-                // staking is running
-                userStakes[_id].claimTime = block.timestamp + WAITING_TIME_CLAIM;
-            } else {
+                userStakes[_id].claimTime = block.timestamp + WAITING_TIME_TO_UNSTAKE;
+            }
+            // CLAIM
+            else {
                 uint256 reward_ = uStake_.amount + pendingReward(_id);
+
                 require(tokenStaking.transfer(sender, reward_));
-                uStake_.claimed = true;
+
+                userStakes[_id].claimed = true;
+
                 emit Claimed(_id);
             }
-        } else {
-            require(block.timestamp >= userStakes[_id].claimTime, "Not time to can claim");
-            require(tokenStaking.transfer(sender, uStake_.amount));
-            uStake_.claimed = true;
+        }
+        // RETRIEVE AFTER UNSTAKE WAITING TIME ENDED
+        else {
+            require(block.timestamp >= uStake_.claimTime, "Unable to claim yet!");
+
+            uint256 realAmount = uStake_.amount * (1 - (unstakeFee / 100));
+
+            require(tokenStaking.transfer(sender, realAmount));
+
+            userStakes[_id].claimed = true;
+
             emit Claimed(_id);
         }
+    }
+
+    // calculate reward to claim (_id is id of staking by user)
+    function pendingReward(uint256 _id) public view returns (uint256) {
+        // get staking of user by id
+        UserStake memory uStake_ = userStakes[_id];
+
+        // if that staking is claimed by user, reward = 0
+        if (uStake_.claimed) return 0;
+
+        // get option stake by that staking of user
+        Stake memory stake_ = stakes[uStake_.stakeId];
+
+        // calculate time from the moment that user stakes token to now
+        // block.timestamp = [now]
+        // if [now] < the moment start staking + duration of that staking (means that not meet claim time)
+        uint256 time_ = block.timestamp < uStake_.start + stake_.duration
+            ? block.timestamp - uStake_.start // time = subs from start to now
+            : stake_.duration; // time = staking duration
+
+        // for example, let's say the apy is 100% => apy value will be 100 * 100 = 10,000
+        return (uStake_.amount * stake_.apy * time_) / (1e5 * 365 days); // 1e5 * 365 days = 100,000 * 365 = 36,500,000
     }
 }
