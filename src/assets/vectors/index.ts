@@ -4,6 +4,10 @@ import Ad3 from "./Ad3.svg";
 import Ad4 from "./Ad4.svg";
 import Ad5 from "./Ad5.svg";
 import Ad6 from "./Ad6.svg";
+import ConnecLidityMb from "./ConnecLidityMb.svg";
+import ConnectLidity from "./ConnectLidity.svg";
+import DarkBall from "./DarkBall.svg";
+import Dex from "./Dex.svg";
 import IconMenuDao from "./IconMenuDao.svg";
 import IconMenuLiquidity from "./IconMenuLiquidity.svg";
 import IconMenuStaking from "./IconMenuStaking.svg";
@@ -26,6 +30,10 @@ import Offer2 from "./Offer2.svg";
 import Offer3 from "./Offer3.svg";
 
 export {
+  Dex,
+  DarkBall,
+  ConnecLidityMb,
+  ConnectLidity,
   Offer1,
   Offer2,
   Offer3,

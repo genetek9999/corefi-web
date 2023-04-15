@@ -32,7 +32,7 @@ export const Offers = () => {
       <Flex wrap={{ base: "wrap", lg: "unset" }} gap={30} justify={"center"}>
         {OfferContent.map((item) => (
           <Flex
-            w={"33.33%"}
+            w={{ base: "100%", sm: "33.33%" }}
             sx={{
               border: "1px solid rgba(255, 255, 255, 0.2)",
               borderRadius: " 16px",

@@ -56,3 +56,26 @@ export const OfferContent = [
     content: "Accept payments in a wide range of tokens while receiving in any token you prefer.",
   },
 ];
+
+export const NetworkContent1 = {
+  text: "COREFI NETWORK →",
+  link: "",
+  title: "CoreSwap: Trade all DEXs at once",
+  content: "CoreSwap finds you the best prices across exchanges and combines them into one trade.",
+};
+
+export const CommunityContent = [
+  {
+    title: "Instant Governance",
+    content: "Participate by proposing upgrades and discussing the future of the network with the CoreFi community.",
+  },
+  {
+    title: "Staking and CoreFi Power",
+    content:
+      "COREFI stakers can use CoreFi Power to participate in network governance or delegate it to other users and to resolvers - in exchange for rewards from resolver incentive programs.",
+  },
+  {
+    title: "Governance Portal",
+    content: "Vote on official CoreFi governance proposals and view past proposals.",
+  },
+];
