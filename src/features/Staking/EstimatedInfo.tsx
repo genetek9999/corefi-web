@@ -56,7 +56,7 @@ const _EstimatedInfo: ForwardRefRenderFunction<Ref, Props> = ({ stakeType, selec
         <Text c="#fff">Estimated reward:</Text>
 
         <Text c="#fff" fw="bold">
-          {estimatedReward} JYC
+          {estimatedReward} KYC
         </Text>
       </Group>
     </Box>

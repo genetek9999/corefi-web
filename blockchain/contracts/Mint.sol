@@ -1635,7 +1635,7 @@ contract Mint is ERC721Enumerable, Ownable {
         router = IUniswapV2Router02(DexRouter);
     }
 
-    function upateFeeReceiver(address _newFeeReceiver) public onlyOwner {
+    function updateFeeReceiver(address _newFeeReceiver) public onlyOwner {
         FeeReceiver = _newFeeReceiver;
     }
 
