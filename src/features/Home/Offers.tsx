@@ -39,10 +39,11 @@ export const Offers = () => {
             }}
             bg={"#0A0118"}
             p={16}
+            pt={0}
             key={nanoid()}
             direction={"column"}
           >
-            <AspectRatio w={"100%"} mb={24} ratio={366 / 178}>
+            <AspectRatio w={"100%"} mb={24} ratio={366 / 202}>
               {item.pic}
             </AspectRatio>
 

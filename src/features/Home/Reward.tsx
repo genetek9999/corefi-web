@@ -1,13 +1,12 @@
-import { Box, Flex, Text, Title } from "@mantine/core";
-import { nanoid } from "nanoid";
+import { AspectRatio, Box, Flex, Text, Title } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { BgBox, BgCorfiCommunity, BgCorfiCommunityMb, BgCorfiStake2 } from "~/assets/images";
+import { BgBox, BgCordiStake2Mb, BgCorfiStake, BgCorfiStake2, BgCorfiStakeMb } from "~/assets/images";
+import { RewardWallet } from "~/assets/vectors";
 import { ButtonCommon, Section } from "~/components";
-import { CommunityContent } from "~/constants/HomeContent";
 
-export const CorefiCommunity = () => {
+export const Reward = () => {
   return (
     <Section mb={36} py={0} sx={{ zIndex: 10 }}>
       <Box>
@@ -44,13 +43,20 @@ const Content = () => {
   }, []);
   return (
     <Box>
-      <Flex gap={24} py={{ base: 20, sm: 67 }} px={{ base: 15, lg: 100 }} direction={{ base: "column", sm: "row" }}>
-        <Box w={"100%"} maw={563} mih={427} py={{ base: 20, sm: 32 }} px={{ base: 20, sm: 28 }} pos={"relative"}>
-          {" "}
-          <Image style={{ zIndex: -1 }} src={isPc ? BgCorfiCommunity : BgCorfiCommunityMb} alt="" fill />
-          <Text mb={16} fw={400} fz={{ sm: 18 }}>
-            COREFI NETWORK →
-          </Text>
+      <Flex
+        align={"center"}
+        gap={24}
+        py={{ base: 20, sm: 67 }}
+        px={{ base: 15, lg: 100 }}
+        direction={{ base: "column", sm: "row" }}
+      >
+        <Box w={"100%"} maw={563} py={{ base: 20, sm: 32 }} px={{ base: 14, sm: 28 }} pos={"relative"}>
+          <Link href={""}>
+            {" "}
+            <Text mb={{ base: 12, sm: 8 }} fw={400} fz={{ base: 16, sm: 18 }}>
+              COREFI NETWORK →
+            </Text>
+          </Link>
           <Title
             sx={{
               background: " linear-gradient(180deg, #FFFFFF 22.5%, rgba(255, 255, 255, 0.7) 100%)",
@@ -58,16 +64,20 @@ const Content = () => {
               "-webkit-text-fill-color": "transparent",
               "background-clip": "text",
             }}
-            mb={20}
-            fz={{ base: 24, sm: 32 }}
+            mb={{ base: 20, sm: 28 }}
+            fw={600}
+            fz={{ base: 24, sm: 44 }}
           >
-            Governed by the community.
+            {" "}
+            Get rewarded for providing protection.
           </Title>
-          <Text fz={{ base: 12, sm: 16 }} opacity={0.8}>
-            The CoreFi Network is managed by a global community of COREFI token holders and delegates.
+          <Text opacity={0.8} fw={400} fz={{ base: 12, sm: 20 }}>
+            Invest capital with Core-AntiRisk and earn additional rewards on already productive assets. Leverage dynamic
+            risk assessment data to allocate funds safely and efficiently.
           </Text>
+
           <ButtonCommon
-            mt={{ base: 20, sm: 48 }}
+            mt={28}
             bg={
               "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
             }
@@ -79,20 +89,21 @@ const Content = () => {
           </ButtonCommon>
         </Box>
 
-        <Flex gap={24} direction={"column"} w={"100%"}>
-          {CommunityContent.map((item) => (
-            <Box p={25} sx={{ borderRadius: "24px", border: "1px solid rgba(255, 255, 255, 0.1)" }} key={nanoid()}>
-              <Title mb={13} fz={{ sm: 20 }}>
-                {" "}
-                {item.title}
-              </Title>
-
-              <Text opacity={0.8} fz={16}>
-                Participate by proposing upgrades and discussing the future of the network with the CoreFi community.
-              </Text>
-            </Box>
-          ))}
-        </Flex>
+        <AspectRatio
+          pos={"relative"}
+          w={"100%"}
+          maw={550}
+          sx={{
+            boxShadow:
+              "0px 0px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px rgba(0, 0, 0, 0.02), 0px 16px 24px rgba(0, 0, 0, 0.02), 0px 24px 32px rgba(0, 0, 0, 0.02)",
+            borderRadius: "24px",
+          }}
+          // py={32}
+          px={{ base: 0, sm: 28 }}
+          ratio={557 / 189}
+        >
+          <RewardWallet />
+        </AspectRatio>
       </Flex>
     </Box>
   );

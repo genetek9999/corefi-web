@@ -79,3 +79,17 @@ export const CommunityContent = [
     content: "Vote on official CoreFi governance proposals and view past proposals.",
   },
 ];
+
+export const HowItWorkContent = [
+  {
+    content: "Treasuy assets support for spot trading with no slippage, with contract leverage of up to 30x..",
+  },
+  {
+    content:
+      "Dynamic pricing is supported by Chainlink Oracles and an aggregate of prices from leading volume exchanges.",
+  },
+  {
+    content:
+      "10% seigniorage of OPEN tokens is allocated to the DAO community. 70% of the transaction fee is allocated to repurchase OPEN and 30% to ve (NEC).",
+  },
+];
