@@ -10,11 +10,9 @@ export const ActionButtons: React.FC<GroupProps> = ({ ...props }) => {
 
   return (
     <Group spacing={10} {...props}>
-      <ButtonCommon
+      {/* <ButtonCommon
         variant="filled"
-        bg={
-          "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
-        }
+     
         onClick={() => void setupDefaultNetwork()}
         px={15}
         py={9}
@@ -24,7 +22,7 @@ export const ActionButtons: React.FC<GroupProps> = ({ ...props }) => {
         darkenHover
       >
         Add chain
-      </ButtonCommon>
+      </ButtonCommon> */}
 
       {!address ? (
         <ButtonCommon

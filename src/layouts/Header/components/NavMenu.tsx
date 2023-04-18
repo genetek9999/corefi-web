@@ -139,7 +139,7 @@ const SubMenu: React.FC<SubMenuProps> = ({ isVertical = false, label, withIcon, 
               : {}),
           }}
         >
-          <Text fw={500} tt="capitalize">
+          <Text fw={500} tt="uppercase">
             {label}
           </Text>
 
