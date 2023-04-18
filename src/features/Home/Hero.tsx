@@ -15,7 +15,7 @@ export const Hero = () => {
         }}
         mah={{ base: 1750, sm: "unset" }}
       >
-        <BackgroundImage sx={{ zIndex: 10 }} px={20} mb={{ base: 0, sm: 240 }} pt={85} src={HeroBg.src}>
+        <BackgroundImage sx={{ zIndex: 10 }} px={20} mb={{ base: -300, sm: 240 }} pt={85} src={HeroBg.src}>
           {" "}
           <Flex direction="column" align="center" justify="center">
             <Title
@@ -60,15 +60,18 @@ export const Hero = () => {
               {/* thay video vao day */}
               <AspectRatio
                 data-aos="fade-up"
-                display={{ base: "none", sm: "block" }}
+                // display={{ base: "none", sm: "block" }}
                 maw={1200}
                 mx={"auto"}
                 ratio={1200 / 651}
               >
-                <Image src={VideoExample} alt="" fill />
+                <video style={{ borderRadius: "20px" }} loop playsInline autoPlay={true} muted width="100%">
+                  <source src="/VidHero.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </AspectRatio>
 
-              <AspectRatio
+              {/* <AspectRatio
                 data-aos="fade-up"
                 display={{ base: "block", sm: "none" }}
                 maw={1200}
@@ -76,7 +79,7 @@ export const Hero = () => {
                 ratio={750 / 1040}
               >
                 <Image src={VidMobile} alt="" fill />
-              </AspectRatio>
+              </AspectRatio> */}
 
               {/* <Flex
                 align={"center"}
@@ -95,7 +98,7 @@ export const Hero = () => {
         </BackgroundImage>
         <Box>
           {" "}
-          <BackgroundImage display={{ base: "none", sm: "block" }} src={HomeBg2.src}>
+          <BackgroundImage bgr={"no-repeat"} display={{ base: "none", sm: "block" }} src={HomeBg2.src}>
             <Box w={1920} h={794}></Box>
           </BackgroundImage>
           <BackgroundImage

@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import { Line, Mission1 } from "~/assets/vectors";
 import { Section } from "~/components";
 import { MissionContent } from "~/constants/HomeContent";
-// import { type MissionProbs } from "~/type";
-// import { MissionContent } from "~/constants/MissionContent";
 import { type MissionProps } from "~/type";
 
 import { Mission } from "./Components/Mission";
@@ -16,7 +14,7 @@ export const OurMission = () => {
 
   console.log(currentTab, "test");
   return (
-    <Section pt={0} bg={{ base: "#1a0b36", sm: "unset" }} mt={{ base: "-100px", lg: "-470px" }}>
+    <Section pt={0} bg={{ base: "#1a0b36", sm: "unset" }} mt={{ base: "-400px", lg: "-470px" }}>
       <Box
         sx={{ borderRadius: "24px" }}
         bg={"linear-gradient(180deg, rgba(255, 255, 255, 0.0488) 0%, rgba(255, 255, 255, 0) 47.34%)"}
@@ -47,6 +45,7 @@ export const OurMission = () => {
               <Flex justify={"center"} gap={28} direction={"column"}>
                 {MissionContent.map((item) => (
                   <Text
+                    data-aos="fade-up"
                     onClick={() => {
                       setCurrentTab(item);
                     }}
