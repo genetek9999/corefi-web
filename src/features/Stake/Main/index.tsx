@@ -1,17 +1,20 @@
-import { Box } from "@mantine/core";
+import { Box, Group, Title } from "@mantine/core";
 import React from "react";
 
 import { Balance } from "./Balance";
 import { ClaimSection } from "./ClaimSection";
 import { InputAmount } from "./InputAmount";
-import { OptionSegmented } from "./OptionSegmented";
 
 export const Main = () => {
   return (
     <Box>
-      <OptionSegmented />
+      <Group mb="sm" position="apart" align="end">
+        <Title order={2} fz={{ base: 20 }} fw={600}>
+          Stake
+        </Title>
 
-      <Balance />
+        <Balance />
+      </Group>
 
       <InputAmount />
 
@@ -19,3 +22,5 @@ export const Main = () => {
     </Box>
   );
 };
+
+//   8,979.999,999,995,129 - 8,899.999,999,995,129

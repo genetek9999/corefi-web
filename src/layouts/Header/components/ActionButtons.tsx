@@ -10,7 +10,7 @@ export const ActionButtons: React.FC<GroupProps> = ({ ...props }) => {
 
   return (
     <Group spacing={10} {...props}>
-      <ButtonCommon
+      {/* <ButtonCommon
         variant="filled"
         bg={colors.PRIMARY_COLOR}
         onClick={() => void setupDefaultNetwork()}
@@ -19,7 +19,7 @@ export const ActionButtons: React.FC<GroupProps> = ({ ...props }) => {
         darkenHover
       >
         Add chain
-      </ButtonCommon>
+      </ButtonCommon> */}
 
       {!address ? (
         <ButtonCommon variant="filled" bg={colors.PRIMARY_COLOR} onClick={connect} px={15} py={9} darkenHover>

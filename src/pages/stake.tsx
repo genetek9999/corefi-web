@@ -1,6 +1,7 @@
 import { Flex, Grid, Text, Title } from "@mantine/core";
 import { type NextPage } from "next";
 import { Page, Section, SpaceSection } from "~/components";
+import { TokenProvider } from "~/contexts/tokenContext";
 import { Information, Main, Overview, Remittances, TotalStaked } from "~/features/Stake";
 
 const Stake: NextPage = () => {
@@ -29,7 +30,9 @@ const Stake: NextPage = () => {
 
           <Grid.Col span={12} md={6}>
             <Flex direction="column" gap={40}>
-              <Main />
+              <TokenProvider>
+                <Main />
+              </TokenProvider>
 
               <Remittances />
             </Flex>

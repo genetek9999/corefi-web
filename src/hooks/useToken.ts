@@ -49,10 +49,10 @@ export const useToken = () => {
       contract.on("Transfer", (from: string, to: string, amount: BigNumber) => {
         from = getChecksumAddress(from);
         to = getChecksumAddress(to);
-        const formattedAmont = formatBigNumber(amount);
+        const formattedAmount = formatBigNumber(amount);
 
         if (from === address || to === address) {
-          console.log(`Receive transfer ${formattedAmont} JYC from ${from} to ${to}`);
+          console.log(`Receive transfer ${formattedAmount} KYC from ${from} to ${to}`);
 
           void getBalance();
         }

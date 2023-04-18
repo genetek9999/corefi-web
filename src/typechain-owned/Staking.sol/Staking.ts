@@ -29,54 +29,89 @@ import type {
   utils,
 } from "ethers";
 
+export declare namespace Staking {
+  export type UserStakeHistoryStruct = {
+    user: PromiseOrValue<string>;
+    amount: PromiseOrValue<BigNumberish>;
+    created_at: PromiseOrValue<BigNumberish>;
+    history_type: PromiseOrValue<BigNumberish>;
+  };
+
+  export type UserStakeHistoryStructOutput = [
+    string,
+    BigNumber,
+    BigNumber,
+    number
+  ] & {
+    user: string;
+    amount: BigNumber;
+    created_at: BigNumber;
+    history_type: number;
+  };
+}
+
 export interface StakingInterface extends utils.Interface {
   functions: {
-    "WAITING_TIME_CLAIM()": FunctionFragment;
+    "WAITING_TIME_TO_UNSTAKE()": FunctionFragment;
     "addStake(uint256,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "claim(uint256)": FunctionFragment;
     "earned(address)": FunctionFragment;
+    "getAllUserStakeHistory()": FunctionFragment;
+    "getUserStakeIdList(address)": FunctionFragment;
     "owner()": FunctionFragment;
     "pendingReward(uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "setTokenStaking(address)": FunctionFragment;
     "stake(uint256,uint256)": FunctionFragment;
+    "stakeFee()": FunctionFragment;
     "stakes(uint256)": FunctionFragment;
     "tokenStaking()": FunctionFragment;
     "totalStake()": FunctionFragment;
-    "totalSupply()": FunctionFragment;
+    "totalStakedAmount()": FunctionFragment;
     "totalUserStake()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
+    "unstakeFee()": FunctionFragment;
     "updateStake(uint256,uint256,uint256)": FunctionFragment;
+    "updateStakeFee(uint256)": FunctionFragment;
+    "updateUnstakeFee(uint256)": FunctionFragment;
     "userStakes(uint256)": FunctionFragment;
-    "withdraw()": FunctionFragment;
+    "withdrawAll()": FunctionFragment;
+    "withdrawAmount(uint256)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "WAITING_TIME_CLAIM"
+      | "WAITING_TIME_TO_UNSTAKE"
       | "addStake"
       | "balanceOf"
       | "claim"
       | "earned"
+      | "getAllUserStakeHistory"
+      | "getUserStakeIdList"
       | "owner"
       | "pendingReward"
       | "renounceOwnership"
       | "setTokenStaking"
       | "stake"
+      | "stakeFee"
       | "stakes"
       | "tokenStaking"
       | "totalStake"
-      | "totalSupply"
+      | "totalStakedAmount"
       | "totalUserStake"
       | "transferOwnership"
+      | "unstakeFee"
       | "updateStake"
+      | "updateStakeFee"
+      | "updateUnstakeFee"
       | "userStakes"
-      | "withdraw"
+      | "withdrawAll"
+      | "withdrawAmount"
   ): FunctionFragment;
 
   encodeFunctionData(
-    functionFragment: "WAITING_TIME_CLAIM",
+    functionFragment: "WAITING_TIME_TO_UNSTAKE",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -93,6 +128,14 @@ export interface StakingInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "earned",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getAllUserStakeHistory",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getUserStakeIdList",
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
@@ -112,6 +155,7 @@ export interface StakingInterface extends utils.Interface {
     functionFragment: "stake",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
   ): string;
+  encodeFunctionData(functionFragment: "stakeFee", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "stakes",
     values: [PromiseOrValue<BigNumberish>]
@@ -125,7 +169,7 @@ export interface StakingInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "totalSupply",
+    functionFragment: "totalStakedAmount",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -137,6 +181,10 @@ export interface StakingInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
+    functionFragment: "unstakeFee",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "updateStake",
     values: [
       PromiseOrValue<BigNumberish>,
@@ -145,19 +193,42 @@ export interface StakingInterface extends utils.Interface {
     ]
   ): string;
   encodeFunctionData(
+    functionFragment: "updateStakeFee",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "updateUnstakeFee",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "userStakes",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
-  encodeFunctionData(functionFragment: "withdraw", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "withdrawAll",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "withdrawAmount",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
 
   decodeFunctionResult(
-    functionFragment: "WAITING_TIME_CLAIM",
+    functionFragment: "WAITING_TIME_TO_UNSTAKE",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "addStake", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "earned", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getAllUserStakeHistory",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getUserStakeIdList",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "pendingReward",
@@ -172,6 +243,7 @@ export interface StakingInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "stake", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "stakeFee", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "stakes", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "tokenStaking",
@@ -179,7 +251,7 @@ export interface StakingInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "totalStake", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "totalSupply",
+    functionFragment: "totalStakedAmount",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -190,12 +262,28 @@ export interface StakingInterface extends utils.Interface {
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "unstakeFee", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "updateStake",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "updateStakeFee",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "updateUnstakeFee",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "userStakes", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "withdrawAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "withdrawAmount",
+    data: BytesLike
+  ): Result;
 
   events: {
     "Claimed(uint256)": EventFragment;
@@ -286,7 +374,7 @@ export interface Staking extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    WAITING_TIME_CLAIM(overrides?: CallOverrides): Promise<[BigNumber]>;
+    WAITING_TIME_TO_UNSTAKE(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     addStake(
       _duration: PromiseOrValue<BigNumberish>,
@@ -308,6 +396,15 @@ export interface Staking extends BaseContract {
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
+
+    getAllUserStakeHistory(
+      overrides?: CallOverrides
+    ): Promise<[Staking.UserStakeHistoryStructOutput[]]>;
+
+    getUserStakeIdList(
+      _address: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber[]]>;
 
     owner(overrides?: CallOverrides): Promise<[string]>;
 
@@ -331,6 +428,8 @@ export interface Staking extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    stakeFee(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     stakes(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -342,7 +441,7 @@ export interface Staking extends BaseContract {
 
     totalStake(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
+    totalStakedAmount(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     totalUserStake(overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -351,10 +450,22 @@ export interface Staking extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    unstakeFee(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     updateStake(
       _duration: PromiseOrValue<BigNumberish>,
       _apy: PromiseOrValue<BigNumberish>,
       _id: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    updateStakeFee(
+      _newStakeFee: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    updateUnstakeFee(
+      _newUnstakeFee: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -372,12 +483,17 @@ export interface Staking extends BaseContract {
       }
     >;
 
-    withdraw(
+    withdrawAll(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    withdrawAmount(
+      _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
   };
 
-  WAITING_TIME_CLAIM(overrides?: CallOverrides): Promise<BigNumber>;
+  WAITING_TIME_TO_UNSTAKE(overrides?: CallOverrides): Promise<BigNumber>;
 
   addStake(
     _duration: PromiseOrValue<BigNumberish>,
@@ -399,6 +515,15 @@ export interface Staking extends BaseContract {
     arg0: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
+
+  getAllUserStakeHistory(
+    overrides?: CallOverrides
+  ): Promise<Staking.UserStakeHistoryStructOutput[]>;
+
+  getUserStakeIdList(
+    _address: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber[]>;
 
   owner(overrides?: CallOverrides): Promise<string>;
 
@@ -422,6 +547,8 @@ export interface Staking extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  stakeFee(overrides?: CallOverrides): Promise<BigNumber>;
+
   stakes(
     arg0: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -431,7 +558,7 @@ export interface Staking extends BaseContract {
 
   totalStake(overrides?: CallOverrides): Promise<BigNumber>;
 
-  totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+  totalStakedAmount(overrides?: CallOverrides): Promise<BigNumber>;
 
   totalUserStake(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -440,10 +567,22 @@ export interface Staking extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  unstakeFee(overrides?: CallOverrides): Promise<BigNumber>;
+
   updateStake(
     _duration: PromiseOrValue<BigNumberish>,
     _apy: PromiseOrValue<BigNumberish>,
     _id: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  updateStakeFee(
+    _newStakeFee: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  updateUnstakeFee(
+    _newUnstakeFee: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -461,12 +600,17 @@ export interface Staking extends BaseContract {
     }
   >;
 
-  withdraw(
+  withdrawAll(
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  withdrawAmount(
+    _amount: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   callStatic: {
-    WAITING_TIME_CLAIM(overrides?: CallOverrides): Promise<BigNumber>;
+    WAITING_TIME_TO_UNSTAKE(overrides?: CallOverrides): Promise<BigNumber>;
 
     addStake(
       _duration: PromiseOrValue<BigNumberish>,
@@ -489,6 +633,15 @@ export interface Staking extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    getAllUserStakeHistory(
+      overrides?: CallOverrides
+    ): Promise<Staking.UserStakeHistoryStructOutput[]>;
+
+    getUserStakeIdList(
+      _address: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber[]>;
+
     owner(overrides?: CallOverrides): Promise<string>;
 
     pendingReward(
@@ -509,6 +662,8 @@ export interface Staking extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    stakeFee(overrides?: CallOverrides): Promise<BigNumber>;
+
     stakes(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -520,7 +675,7 @@ export interface Staking extends BaseContract {
 
     totalStake(overrides?: CallOverrides): Promise<BigNumber>;
 
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+    totalStakedAmount(overrides?: CallOverrides): Promise<BigNumber>;
 
     totalUserStake(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -529,10 +684,22 @@ export interface Staking extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    unstakeFee(overrides?: CallOverrides): Promise<BigNumber>;
+
     updateStake(
       _duration: PromiseOrValue<BigNumberish>,
       _apy: PromiseOrValue<BigNumberish>,
       _id: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    updateStakeFee(
+      _newStakeFee: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    updateUnstakeFee(
+      _newUnstakeFee: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -550,7 +717,12 @@ export interface Staking extends BaseContract {
       }
     >;
 
-    withdraw(overrides?: CallOverrides): Promise<void>;
+    withdrawAll(overrides?: CallOverrides): Promise<void>;
+
+    withdrawAmount(
+      _amount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
   };
 
   filters: {
@@ -593,7 +765,7 @@ export interface Staking extends BaseContract {
   };
 
   estimateGas: {
-    WAITING_TIME_CLAIM(overrides?: CallOverrides): Promise<BigNumber>;
+    WAITING_TIME_TO_UNSTAKE(overrides?: CallOverrides): Promise<BigNumber>;
 
     addStake(
       _duration: PromiseOrValue<BigNumberish>,
@@ -613,6 +785,13 @@ export interface Staking extends BaseContract {
 
     earned(
       arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getAllUserStakeHistory(overrides?: CallOverrides): Promise<BigNumber>;
+
+    getUserStakeIdList(
+      _address: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -638,6 +817,8 @@ export interface Staking extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    stakeFee(overrides?: CallOverrides): Promise<BigNumber>;
+
     stakes(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -647,7 +828,7 @@ export interface Staking extends BaseContract {
 
     totalStake(overrides?: CallOverrides): Promise<BigNumber>;
 
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+    totalStakedAmount(overrides?: CallOverrides): Promise<BigNumber>;
 
     totalUserStake(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -656,10 +837,22 @@ export interface Staking extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    unstakeFee(overrides?: CallOverrides): Promise<BigNumber>;
+
     updateStake(
       _duration: PromiseOrValue<BigNumberish>,
       _apy: PromiseOrValue<BigNumberish>,
       _id: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    updateStakeFee(
+      _newStakeFee: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    updateUnstakeFee(
+      _newUnstakeFee: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -668,13 +861,18 @@ export interface Staking extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    withdraw(
+    withdrawAll(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    withdrawAmount(
+      _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    WAITING_TIME_CLAIM(
+    WAITING_TIME_TO_UNSTAKE(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -696,6 +894,15 @@ export interface Staking extends BaseContract {
 
     earned(
       arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getAllUserStakeHistory(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getUserStakeIdList(
+      _address: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -721,6 +928,8 @@ export interface Staking extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    stakeFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     stakes(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -730,7 +939,7 @@ export interface Staking extends BaseContract {
 
     totalStake(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    totalStakedAmount(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     totalUserStake(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -739,10 +948,22 @@ export interface Staking extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    unstakeFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     updateStake(
       _duration: PromiseOrValue<BigNumberish>,
       _apy: PromiseOrValue<BigNumberish>,
       _id: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    updateStakeFee(
+      _newStakeFee: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    updateUnstakeFee(
+      _newUnstakeFee: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -751,7 +972,12 @@ export interface Staking extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    withdraw(
+    withdrawAll(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    withdrawAmount(
+      _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
   };

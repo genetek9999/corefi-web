@@ -1,8 +1,11 @@
 import { Box, Grid, Text, Title } from "@mantine/core";
 import React from "react";
-import { formatPrice } from "~/utils";
+import { keys } from "~/constants";
+import { api, formatPrice } from "~/utils";
 
 export const Overview = () => {
+  const { data: totalStaked } = api.staking.getTotalStaked.useQuery();
+
   return (
     <Box>
       <Title order={2} fz={{ base: 20 }} fw={600} mb="md">
@@ -11,15 +14,15 @@ export const Overview = () => {
 
       <Grid>
         <Grid.Col span={12} sm={4}>
-          <Card title="Total Staked" />
+          <Card title="Total Staked" value={totalStaked} />
         </Grid.Col>
 
         <Grid.Col span={12} sm={4}>
-          <Card title="APR (30D)" suffix="%" />
+          <Card title={`APY (${keys.STAKE_DURATION})`} suffix="%" value={keys.STAKE_APY} />
         </Grid.Col>
 
         <Grid.Col span={12} sm={4}>
-          <Card title="Deposit Fee" suffix="%" />
+          <Card title="Deposit Fee" suffix="%" value={keys.STAKE_FEE} />
         </Grid.Col>
       </Grid>
     </Box>

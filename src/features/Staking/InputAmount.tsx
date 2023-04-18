@@ -1,26 +1,16 @@
 import { Button, Flex, TextInput } from "@mantine/core";
-import React, { type ForwardRefRenderFunction, forwardRef, memo, useImperativeHandle, useState } from "react";
+import React, { memo } from "react";
 import { useTokenContext } from "~/contexts/tokenContext";
+
+import { useStakeAmount } from "./hooks/useStakeAmount";
+import { useStakeAmountNumber } from "./hooks/useStakeAmountNumber";
 
 const REGEX_POSITIVE_FLOAT = /^[+]?\d+(\.\d+)?$/;
 
-type Ref = {
-  stakeAmount: string;
-  setStakeAmount: React.Dispatch<React.SetStateAction<string>>;
-};
-
-type Props = {
-  setStakeAmountNumber: (amount: number) => void;
-};
-
-const _InputAmount: ForwardRefRenderFunction<Ref, Props> = ({ setStakeAmountNumber }, ref) => {
+const _InputAmount = () => {
   const { balance } = useTokenContext();
-  const [stakeAmount, setStakeAmount] = useState("");
-
-  useImperativeHandle(ref, () => ({
-    stakeAmount,
-    setStakeAmount,
-  }));
+  const [stakeAmount, setStakeAmount] = useStakeAmount((state) => [state.value, state.setValue]);
+  const setStakeAmountNumber = useStakeAmountNumber((state) => state.setValue);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -31,8 +21,6 @@ const _InputAmount: ForwardRefRenderFunction<Ref, Props> = ({ setStakeAmountNumb
 
     setStakeAmountNumber(parseFloat(value));
   };
-
-  console.log("render input");
 
   return (
     <Flex mt={13} gap="xs" align={"center"} justify={"space-between"}>
@@ -51,6 +39,4 @@ const _InputAmount: ForwardRefRenderFunction<Ref, Props> = ({ setStakeAmountNumb
   );
 };
 
-const __InputAmount = forwardRef<Ref, Props>(_InputAmount);
-
-export const InputAmount = memo(__InputAmount);
+export const InputAmount = memo(_InputAmount);

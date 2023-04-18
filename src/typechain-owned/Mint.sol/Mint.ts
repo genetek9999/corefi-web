@@ -105,10 +105,10 @@ export interface MintInterface extends utils.Interface {
     "totalSupply()": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
-    "upateFeeReceiver(address)": FunctionFragment;
     "updateBaseImageURI(string)": FunctionFragment;
     "updateBaseTokenURI(string)": FunctionFragment;
     "updateCost(uint256)": FunctionFragment;
+    "updateFeeReceiver(address)": FunctionFragment;
     "updateImageExtension(string)": FunctionFragment;
     "updateMintOnce(bool)": FunctionFragment;
     "updateRewardToken(address)": FunctionFragment;
@@ -167,10 +167,10 @@ export interface MintInterface extends utils.Interface {
       | "totalSupply"
       | "transferFrom"
       | "transferOwnership"
-      | "upateFeeReceiver"
       | "updateBaseImageURI"
       | "updateBaseTokenURI"
       | "updateCost"
+      | "updateFeeReceiver"
       | "updateImageExtension"
       | "updateMintOnce"
       | "updateRewardToken"
@@ -358,10 +358,6 @@ export interface MintInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "upateFeeReceiver",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "updateBaseImageURI",
     values: [PromiseOrValue<string>]
   ): string;
@@ -372,6 +368,10 @@ export interface MintInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "updateCost",
     values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "updateFeeReceiver",
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "updateImageExtension",
@@ -531,10 +531,6 @@ export interface MintInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "upateFeeReceiver",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "updateBaseImageURI",
     data: BytesLike
   ): Result;
@@ -543,6 +539,10 @@ export interface MintInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "updateCost", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "updateFeeReceiver",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "updateImageExtension",
     data: BytesLike
@@ -845,11 +845,6 @@ export interface Mint extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    upateFeeReceiver(
-      _newFeeReceiver: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     updateBaseImageURI(
       baseImageURI_: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -862,6 +857,11 @@ export interface Mint extends BaseContract {
 
     updateCost(
       _newCost: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    updateFeeReceiver(
+      _newFeeReceiver: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -1084,11 +1084,6 @@ export interface Mint extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  upateFeeReceiver(
-    _newFeeReceiver: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   updateBaseImageURI(
     baseImageURI_: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1101,6 +1096,11 @@ export interface Mint extends BaseContract {
 
   updateCost(
     _newCost: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  updateFeeReceiver(
+    _newFeeReceiver: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -1317,11 +1317,6 @@ export interface Mint extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    upateFeeReceiver(
-      _newFeeReceiver: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     updateBaseImageURI(
       baseImageURI_: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -1334,6 +1329,11 @@ export interface Mint extends BaseContract {
 
     updateCost(
       _newCost: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    updateFeeReceiver(
+      _newFeeReceiver: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1599,11 +1599,6 @@ export interface Mint extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    upateFeeReceiver(
-      _newFeeReceiver: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     updateBaseImageURI(
       baseImageURI_: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1616,6 +1611,11 @@ export interface Mint extends BaseContract {
 
     updateCost(
       _newCost: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    updateFeeReceiver(
+      _newFeeReceiver: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -1837,11 +1837,6 @@ export interface Mint extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    upateFeeReceiver(
-      _newFeeReceiver: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     updateBaseImageURI(
       baseImageURI_: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1854,6 +1849,11 @@ export interface Mint extends BaseContract {
 
     updateCost(
       _newCost: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    updateFeeReceiver(
+      _newFeeReceiver: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

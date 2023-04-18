@@ -1,3 +1,9 @@
 export const keys = {
   PRELOAD_TIMEOUT: 1000,
+  STAKE_FEE: 1,
+  STAKE_APY: 1000000,
+  STAKE_DURATION: "5m",
+  STAKE_DURATION_VALUE: 300,
+  STAKE_DURATION_TEXT: "five minutes",
+  STAKE_OPTION_ID: 0,
 };

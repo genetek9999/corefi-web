@@ -1,5 +1,5 @@
 import type { BigNumber, ContractTransaction } from "ethers";
-import { createContext, useContext, useEffect, useMemo } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef } from "react";
 import { useToken } from "~/hooks/useToken";
 
 interface ITokenContext {
@@ -17,6 +17,7 @@ export const TokenContext = createContext<ITokenContext>({
 export const useTokenContext = () => useContext(TokenContext);
 
 export const TokenProvider = ({ children }: { children: React.ReactNode }) => {
+  const effectRan = useRef(false);
   const { balance, getAllowance, approve, getBalance, onTransfer } = useToken();
 
   useEffect(() => {
@@ -24,7 +25,11 @@ export const TokenProvider = ({ children }: { children: React.ReactNode }) => {
   }, [getBalance]);
 
   useEffect(() => {
-    void onTransfer();
+    if (!effectRan.current) {
+      void onTransfer();
+
+      effectRan.current = true;
+    }
   }, [onTransfer]);
 
   const value = useMemo(

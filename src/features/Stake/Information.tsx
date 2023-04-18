@@ -1,5 +1,6 @@
 import { Box, Text, type TextProps, Title } from "@mantine/core";
 import React from "react";
+import { keys } from "~/constants";
 
 export const Information = () => {
   return (
@@ -19,15 +20,15 @@ export const Information = () => {
           A % fee is deducted from every swap and used to buy a stablecoin which is distributed to all COREFI stakers.
         </Text>
 
-        <Text {...textProps}>Rewards are distributed every few days, and you can Harvest at any time.</Text>
+        <Text {...textProps}>Rewards are distributed every few days, and you can Claim at any time.</Text>
 
         <Text {...textProps}>
-          The APR (30D) metric shows an annualized return that is forecasted, based on the revenue collected over the
-          previous thirty days.
+          The APY ({keys.STAKE_DURATION}) metric shows an annualized return that is forecasted, based on the revenue
+          collected over the previous {keys.STAKE_DURATION_TEXT}.
         </Text>
 
         <Text {...textProps}>
-          Deposit fee is deducted when you deposit your JOE tokens. The deposit fee may be modified at any time.
+          Deposit fee is deducted when you deposit your COREFI tokens. The deposit fee may be modified at any time.
         </Text>
       </Box>
     </Box>

@@ -2,9 +2,11 @@ import { Box, Text, Title } from "@mantine/core";
 import React from "react";
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from "recharts";
 import { colors } from "~/constants";
-import { formatPrice } from "~/utils";
+import { api, formatPrice } from "~/utils";
 
 export const TotalStaked = () => {
+  const { data } = api.staking.getTotalStakedChart.useQuery();
+
   return (
     <Box>
       <Title order={2} fz={{ base: 20 }} fw={600} mb="md">
@@ -84,21 +86,6 @@ export const TotalStaked = () => {
     </Box>
   );
 };
-
-const data: DataProps[] = [
-  {
-    date: "30/11/2022",
-    total: 100,
-  },
-  {
-    date: "30/12/2022",
-    total: 1000,
-  },
-  {
-    date: "30/01/2023",
-    total: 500,
-  },
-];
 
 type DataProps = {
   date: string;

@@ -1,71 +1,86 @@
 import { Box, Center, Flex, Text, Title } from "@mantine/core";
+import moment from "moment";
 import { nanoid } from "nanoid";
-import React, { useState } from "react";
-import { formatPrice } from "~/utils";
+import React from "react";
+import { api, formatPrice, shortenWalletAddress } from "~/utils";
 
 export const Remittances = () => {
-  const [dataSource, setDataSource] = useState<TableRowProps[]>([]);
+  const { data } = api.staking.getHistory.useQuery();
 
   return (
     <Box>
       <Title order={2} fz={{ base: 20 }} fw={600} mb="xl">
-        Remittances
+        History
       </Title>
 
-      <Flex justify="space-between" mb={15}>
-        <Box w="33%">
+      <Flex justify="space-between" mb={15} px="sm">
+        <Box w="25%">
+          <Text tt="uppercase" fz={{ base: 12 }} fw={600}>
+            Address
+          </Text>
+        </Box>
+
+        <Box w="25%">
           <Text tt="uppercase" fz={{ base: 12 }} fw={600}>
             Timestamp
           </Text>
         </Box>
 
-        <Box w="33%">
+        <Box w="25%">
           <Text tt="uppercase" fz={{ base: 12 }} fw={600}>
-            Fees Collected
+            Type
           </Text>
         </Box>
 
-        <Box w="33%">
+        <Box w="25%">
           <Text tt="uppercase" fz={{ base: 12 }} fw={600} ta="end">
-            USD Remitted
+            Amount
           </Text>
         </Box>
       </Flex>
 
-      {!dataSource.length ? (
-        <Center tt="uppercase" fw="bold" h={150} bg="rgba(255, 255, 255, 0.08)" sx={{ borderRadius: 20 }}>
-          No Data
-        </Center>
-      ) : (
-        dataSource.map((item) => <TableRow key={nanoid()} {...item} />)
-      )}
+      {data &&
+        (!data.length ? (
+          <Center tt="uppercase" fw="bold" h={150} bg="rgba(255, 255, 255, 0.08)" sx={{ borderRadius: 20 }}>
+            No Data
+          </Center>
+        ) : (
+          data.map((item) => <TableRow key={nanoid()} {...item} />)
+        ))}
     </Box>
   );
 };
 
 type TableRowProps = {
-  timestamp: string;
-  feesCollected: string;
-  usdRemitted: number | string;
+  address: string;
+  amount: number;
+  createdAt: number;
+  type: number;
 };
 
-const TableRow: React.FC<TableRowProps> = ({ feesCollected, timestamp, usdRemitted }) => (
-  <Flex justify="space-between" mb={10} bg="rgba(255, 255, 255, 0.08)" sx={{ borderRadius: 8 }}>
-    <Box w="33%">
+const TableRow: React.FC<TableRowProps> = ({ address, amount, createdAt, type }) => (
+  <Flex justify="space-between" mb={10} bg="rgba(255, 255, 255, 0.08)" sx={{ borderRadius: 8 }} p="sm">
+    <Box w="25%">
       <Text tt="uppercase" fz={{ base: 14 }}>
-        {timestamp}
+        {shortenWalletAddress(address)}
       </Text>
     </Box>
 
-    <Box w="33%">
+    <Box w="25%">
       <Text tt="uppercase" fz={{ base: 14 }}>
-        {feesCollected}
+        {moment.unix(createdAt).format("YYYY-MM-DD")}
       </Text>
     </Box>
 
-    <Box w="33%">
+    <Box w="25%">
+      <Text tt="uppercase" fz={{ base: 14 }}>
+        {type === 1 ? "Claim" : type === 2 ? "Unstake" : "Stake"}
+      </Text>
+    </Box>
+
+    <Box w="25%">
       <Text tt="uppercase" fz={{ base: 14 }} ta="end">
-        {formatPrice(usdRemitted)}
+        {formatPrice(amount, null)} COREFI
       </Text>
     </Box>
   </Flex>

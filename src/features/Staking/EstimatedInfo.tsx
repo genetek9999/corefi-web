@@ -1,45 +1,32 @@
 import { Box, Group, Text } from "@mantine/core";
-import React, { type ForwardRefRenderFunction, forwardRef, memo, useImperativeHandle, useMemo, useState } from "react";
+import React, { memo, useEffect, useMemo } from "react";
+import { type IStakeOption, useStaking } from "~/hooks/useStaking";
+import { formatPrice } from "~/utils";
 
-type Ref = {
-  stakeAmountNumber: number;
-  setStakeAmountNumber: React.Dispatch<React.SetStateAction<number>>;
-};
+import { useSelectOption } from "./hooks/useSelectOption";
+import { useStakeAmountNumber } from "./hooks/useStakeAmountNumber";
 
 type Props = {
-  stakeType: NodeJS.Dict<{
-    label: string;
-    value: string;
-    apy: number;
-    duration: number;
-  }>;
-  selectedStakeId: string;
+  optionList: IStakeOption[];
 };
 
-const _EstimatedInfo: ForwardRefRenderFunction<Ref, Props> = ({ stakeType, selectedStakeId }, ref) => {
-  const [stakeAmountNumber, setStakeAmountNumber] = useState(0);
-
-  useImperativeHandle(ref, () => ({
-    stakeAmountNumber,
-    setStakeAmountNumber,
-  }));
+const _EstimatedInfo: React.FC<Props> = ({ optionList }) => {
+  const selectedStakeId = useSelectOption((state) => state.value);
+  const stakeAmountNumber = useStakeAmountNumber((state) => state.value);
 
   const selectedStake = useMemo(() => {
-    const stake = Object.values(stakeType).find((item) => item?.value === selectedStakeId);
-
-    if (!stake) return stakeType.oneMonth;
+    const stake = optionList.find((item) => item?.id === selectedStakeId);
 
     return stake;
-  }, [selectedStakeId, stakeType]);
+  }, [optionList, selectedStakeId]);
 
-  const selectedStakeApy = useMemo(() => selectedStake?.apy, [selectedStake]);
+  const selectedStakeApy = useMemo(() => selectedStake?.apy || 0, [selectedStake]);
 
   const estimatedReward = useMemo(() => {
-    const duration = 12 / (selectedStake?.duration || 1);
-
-    const APY = (selectedStake?.apy || 0) / 100;
-
-    return ((stakeAmountNumber * APY) / duration).toFixed(2);
+    return (
+      (stakeAmountNumber * (selectedStake?.apy || 0) * (selectedStake?.duration || 1)) /
+      (100 * 365 * 24 * 60 * 60)
+    ).toFixed(5);
   }, [selectedStake?.apy, selectedStake?.duration, stakeAmountNumber]);
 
   return (
@@ -48,7 +35,7 @@ const _EstimatedInfo: ForwardRefRenderFunction<Ref, Props> = ({ stakeType, selec
         <Text c="#fff">APY:</Text>
 
         <Text c="#fff" fw="bold">
-          {selectedStakeApy}%
+          {formatPrice(selectedStakeApy, null)}%
         </Text>
       </Group>
 
@@ -63,6 +50,4 @@ const _EstimatedInfo: ForwardRefRenderFunction<Ref, Props> = ({ stakeType, selec
   );
 };
 
-const __EstimatedInfo = forwardRef<Ref, Props>(_EstimatedInfo);
-
-export const EstimatedInfo = memo(__EstimatedInfo);
+export const EstimatedInfo = memo(_EstimatedInfo);
