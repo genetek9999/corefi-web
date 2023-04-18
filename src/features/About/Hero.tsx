@@ -8,7 +8,7 @@ import { AdItem } from "~/constants/AdItem";
 export const Hero = () => {
   return (
     <Section maw={1920}>
-      <Title ta={"center"} mb={24} fz={{ base: 30, sm: 64 }}>
+      <Title mt={100} ta={"center"} mb={24} fz={{ base: 30, sm: 64 }}>
         Kyber Network Crystal (KNC)
       </Title>
 

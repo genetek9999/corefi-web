@@ -35,9 +35,15 @@ import OfferAbout1 from "./OfferAbout1.svg";
 import OfferAbout2 from "./OfferAbout2.svg";
 import OfferAbout3 from "./OfferAbout3.svg";
 import OfferAbout4 from "./OfferAbout4.svg";
+import PartnerSvg from "./PartnerSvg.svg";
 import RewardWallet from "./RewardWallet.svg";
+import RoadMapSvg from "./RoadMapSvg.svg";
+import TokenomicSvg from "./TokenomicSvg.svg";
 
 export {
+  TokenomicSvg,
+  PartnerSvg,
+  RoadMapSvg,
   OfferAbout1,
   OfferAbout2,
   OfferAbout3,
