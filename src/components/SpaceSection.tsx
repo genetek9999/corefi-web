@@ -18,6 +18,7 @@ export const SpaceSection: React.FC<Props> = ({ desc = DESC, title = TITLE }) =>
   const MainContent = () => (
     <Flex direction="column" justify="center" align="center" h="100%">
       <Center
+        data-aos="fade-up"
         w={130}
         h={130}
         sx={{ borderRadius: 20, border: `4px solid ${colors.PRIMARY_COLOR}` }}
@@ -26,11 +27,11 @@ export const SpaceSection: React.FC<Props> = ({ desc = DESC, title = TITLE }) =>
         <LogoBrand variant="text-vertical" />
       </Center>
 
-      <Title order={2} my={20} fz={{ base: 30, sm: 48 }}>
+      <Title data-aos="fade-up" order={2} my={20} fz={{ base: 30, sm: 48 }}>
         {title}
       </Title>
 
-      <Text ta="center" maw={660} mx="auto">
+      <Text data-aos="fade-up" ta="center" maw={660} mx="auto">
         {desc}
       </Text>
     </Flex>

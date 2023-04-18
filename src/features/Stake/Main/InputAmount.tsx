@@ -24,6 +24,7 @@ export const InputAmount = () => {
   const { stake } = useStaking();
   const [isStaking, setIsStaking] = useState(false);
   const { refetch: refetchHistory } = api.staking.getHistory.useQuery(undefined, { enabled: false });
+  const { refetch: refetchChart } = api.staking.getTotalStakedChart.useQuery(undefined, { enabled: false });
 
   const buttonText = useMemo(() => {
     if (!address) {
@@ -31,7 +32,8 @@ export const InputAmount = () => {
     } else if (!isCorrectChain) {
       return `Switch to ${env.NEXT_PUBLIC_NETWORK_NAME || ""}`;
     } else {
-      return "Stake";
+      // return "Stake";
+      return "Unavailable";
     }
   }, [address, isCorrectChain]);
 
@@ -41,7 +43,7 @@ export const InputAmount = () => {
     } else if (!isCorrectChain) {
       void setupDefaultNetwork();
     } else {
-      void handleStake();
+      // void handleStake();
     }
   };
 
@@ -82,6 +84,8 @@ export const InputAmount = () => {
           await refetchTotalStaked();
 
           await refetchHistory();
+
+          await refetchChart();
 
           showNotification({
             color: "green",

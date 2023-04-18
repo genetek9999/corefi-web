@@ -73,7 +73,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ isVertical = false, isSubMenuItem =
             : {}
         }
       >
-        <Text fw={500} tt="capitalize" {...props}>
+        <Text fw={500} tt="uppercase" {...props}>
           {label}
         </Text>
       </Box>
@@ -139,7 +139,7 @@ const SubMenu: React.FC<SubMenuProps> = ({ isVertical = false, label, withIcon, 
               : {}),
           }}
         >
-          <Text fw={500} tt="capitalize">
+          <Text fw={500} tt="uppercase">
             {label}
           </Text>
 
@@ -161,9 +161,9 @@ const SubMenu: React.FC<SubMenuProps> = ({ isVertical = false, label, withIcon, 
               <Menu.Item key={nanoid()} px={16} py={12} sx={{ borderRadius: 12 }}>
                 <HybridLink key={nanoid()} href={link}>
                   <Group spacing={10}>
-                    {icon}
+                    <Box> {icon}</Box>
 
-                    <Box>
+                    <Box maw={180}>
                       <Text fw={500} tt="capitalize" mb={2}>
                         {label}
                       </Text>

@@ -19,11 +19,11 @@ export const Mission: React.FC<Props> = ({ currentTab, ...props }) => {
       gap={60}
       {...props}
     >
-      <AspectRatio w={"100%"} ratio={482 / 330}>
+      <AspectRatio data-aos="fade-up" w={"100%"} ratio={482 / 330}>
         {currentTab.svg}
       </AspectRatio>
 
-      <Text fz={{ sm: 28 }} fw={500} ta={"center"}>
+      <Text data-aos="fade-up" fz={{ sm: 28 }} fw={500} ta={"center"}>
         {currentTab.content}
       </Text>
     </Flex>

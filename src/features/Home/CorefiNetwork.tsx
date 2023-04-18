@@ -5,6 +5,7 @@ import React from "react";
 import { BgBox } from "~/assets/images";
 import { Dex } from "~/assets/vectors";
 import { ButtonCommon, Section } from "~/components";
+import { paths } from "~/constants";
 import { NetworkContent1, OfferContent } from "~/constants/HomeContent";
 
 export const CorefiNetwork = () => {
@@ -38,20 +39,21 @@ const Content = () => (
         {" "}
         <Link href={NetworkContent1.link}>
           {" "}
-          <Text mb={8} fw={400} fz={{ sm: 18 }}>
+          <Text data-aos="fade-up" mb={8} fw={400} fz={{ sm: 18 }}>
             {NetworkContent1.text}
           </Text>
         </Link>
-        <Title mb={28} fw={600} fz={{ sm: 44 }}>
+        <Title data-aos="fade-up" mb={28} fw={600} fz={{ sm: 44 }}>
           {" "}
           {NetworkContent1.title}
         </Title>
-        <Text opacity={0.8} fw={400} fz={{ sm: 20 }}>
+        <Text data-aos="fade-up" opacity={0.8} fw={400} fz={{ sm: 20 }}>
           {NetworkContent1.content}
         </Text>
       </Box>
 
       <Box
+        data-aos="fade-up"
         w={"100%"}
         maw={590}
         sx={{
@@ -76,6 +78,7 @@ const Content = () => (
           </Flex>
 
           <ButtonCommon
+            href={paths.SWAP}
             bg={
               "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
             }

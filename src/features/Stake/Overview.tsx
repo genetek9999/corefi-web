@@ -14,7 +14,11 @@ export const Overview = () => {
 
       <Grid>
         <Grid.Col span={12} sm={4}>
-          <Card title="Total Staked" value={totalStaked} />
+          <Card
+            title="Total Staked"
+            // value={totalStaked}
+            value={0}
+          />
         </Grid.Col>
 
         <Grid.Col span={12} sm={4}>

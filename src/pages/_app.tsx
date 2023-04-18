@@ -1,12 +1,21 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import Head from "next/head";
+import { useEffect } from "react";
 import { ContextProvider } from "~/contexts";
 import { ThemeProvider } from "~/themes";
 import { api } from "~/utils/api";
 
+// You can also use <link> for styles
+
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       <Head>

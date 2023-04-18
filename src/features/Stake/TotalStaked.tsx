@@ -1,4 +1,4 @@
-import { Box, Text, Title } from "@mantine/core";
+import { Box, Center, Text, Title } from "@mantine/core";
 import React from "react";
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from "recharts";
 import { colors } from "~/constants";
@@ -13,7 +13,17 @@ export const TotalStaked = () => {
         Total Staked
       </Title>
 
-      <Box
+      <Center
+        tt="uppercase"
+        fw="bold"
+        h={150}
+        bg="linear-gradient(180deg, rgba(236, 236, 254, 0.1) 0%, rgba(236, 236, 254, 0) 100%)"
+        sx={{ borderRadius: 20, border: "1px solid rgba(255, 255, 255, 0.1)" }}
+      >
+        No Data
+      </Center>
+
+      {/* <Box
         mt="xl"
         sx={{
           borderRadius: 12,
@@ -82,7 +92,7 @@ export const TotalStaked = () => {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </Box>
+      </Box> */}
     </Box>
   );
 };

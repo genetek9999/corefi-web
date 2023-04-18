@@ -12,17 +12,32 @@ export const ActionButtons: React.FC<GroupProps> = ({ ...props }) => {
     <Group spacing={10} {...props}>
       {/* <ButtonCommon
         variant="filled"
-        bg={colors.PRIMARY_COLOR}
+     
         onClick={() => void setupDefaultNetwork()}
         px={15}
         py={9}
+        sx={{
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
         darkenHover
       >
         Add chain
       </ButtonCommon> */}
 
       {!address ? (
-        <ButtonCommon variant="filled" bg={colors.PRIMARY_COLOR} onClick={connect} px={15} py={9} darkenHover>
+        <ButtonCommon
+          variant="filled"
+          bg={
+            "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
+          }
+          onClick={connect}
+          px={15}
+          sx={{
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+          }}
+          py={9}
+          darkenHover
+        >
           Connect Wallet
         </ButtonCommon>
       ) : (

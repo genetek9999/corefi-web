@@ -39,14 +39,24 @@ export const Remittances = () => {
         </Box>
       </Flex>
 
-      {data &&
+      <Center
+        tt="uppercase"
+        fw="bold"
+        h={150}
+        bg="linear-gradient(180deg, rgba(236, 236, 254, 0.1) 0%, rgba(236, 236, 254, 0) 100%)"
+        sx={{ borderRadius: 20, border: "1px solid rgba(255, 255, 255, 0.1)" }}
+      >
+        No Data
+      </Center>
+
+      {/* {data &&
         (!data.length ? (
           <Center tt="uppercase" fw="bold" h={150} bg="rgba(255, 255, 255, 0.08)" sx={{ borderRadius: 20 }}>
             No Data
           </Center>
         ) : (
           data.map((item) => <TableRow key={nanoid()} {...item} />)
-        ))}
+        ))} */}
     </Box>
   );
 };

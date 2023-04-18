@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import { Line, Mission1 } from "~/assets/vectors";
 import { Section } from "~/components";
 import { MissionContent } from "~/constants/HomeContent";
-// import { type MissionProbs } from "~/type";
-// import { MissionContent } from "~/constants/MissionContent";
 import { type MissionProps } from "~/type";
 
 import { Mission } from "./Components/Mission";
@@ -16,7 +14,7 @@ export const OurMission = () => {
 
   console.log(currentTab, "test");
   return (
-    <Section pt={0} bg={{ base: "#1a0b36", sm: "unset" }} mt={{ base: "-100px", lg: "-470px" }}>
+    <Section pt={0} bg={{ base: "#1a0b36", sm: "unset" }} mt={{ base: "-400px", lg: "-470px" }}>
       <Box
         sx={{ borderRadius: "24px" }}
         bg={"linear-gradient(180deg, rgba(255, 255, 255, 0.0488) 0%, rgba(255, 255, 255, 0) 47.34%)"}
@@ -25,10 +23,10 @@ export const OurMission = () => {
       >
         <Flex align={"center"} direction={{ base: "column", lg: "row" }} gap={20}>
           <Box w={{ base: "100%", lg: "50%" }}>
-            <Text c={"white"} mb={12} fz={24} fw={400}>
+            <Text data-aos="fade-up" c={"white"} mb={12} fz={24} fw={400}>
               Our Mission
             </Text>
-            <Title fz={{ sm: 56 }} fw={600}>
+            <Title data-aos="fade-up" fz={{ sm: 56 }} fw={600}>
               Providing top-notch qualities
             </Title>
 
@@ -47,6 +45,7 @@ export const OurMission = () => {
               <Flex justify={"center"} gap={28} direction={"column"}>
                 {MissionContent.map((item) => (
                   <Text
+                    data-aos="fade-up"
                     onClick={() => {
                       setCurrentTab(item);
                     }}

@@ -67,7 +67,9 @@ export const ClaimSection = () => {
           mt="xs"
         >
           {!userStakeList.length ? (
-            <Center h={200}>No data</Center>
+            <Center h={150} tt="uppercase" fw="bold">
+              No data
+            </Center>
           ) : (
             userStakeList.map((item, index) => (
               <Box key={nanoid()}>
@@ -95,6 +97,7 @@ const Card: React.FC<Props> = ({ children, data: { amount, claimTime, claimed, s
   const { getBalance } = useTokenContext();
   const { refetch: refetchTotalStaked } = api.staking.getTotalStaked.useQuery(undefined, { enabled: false });
   const { refetch: refetchHistory } = api.staking.getHistory.useQuery(undefined, { enabled: false });
+  const { refetch: refetchChart } = api.staking.getTotalStakedChart.useQuery(undefined, { enabled: false });
 
   const handleClaim = async (id: string) => {
     if (!isCorrectChain) await setupDefaultNetwork();
@@ -115,6 +118,8 @@ const Card: React.FC<Props> = ({ children, data: { amount, claimTime, claimed, s
       await refetch();
 
       await refetchHistory();
+
+      await refetchChart();
 
       showNotification({
         color: "green",

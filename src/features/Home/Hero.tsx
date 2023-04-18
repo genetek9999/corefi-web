@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { HeroBg, HomeBg2, HomeBg2Mb, VidMobile, VideoExample } from "~/assets/images";
 import { ButtonCommon, Section } from "~/components";
+import { paths } from "~/constants";
 import { AdItem } from "~/constants/AdItem";
 
 export const Hero = () => {
@@ -14,7 +15,7 @@ export const Hero = () => {
         }}
         mah={{ base: 1750, sm: "unset" }}
       >
-        <BackgroundImage sx={{ zIndex: 10 }} px={20} mb={{ base: 0, sm: 240 }} pt={85} src={HeroBg.src}>
+        <BackgroundImage sx={{ zIndex: 10 }} px={20} mb={{ base: -300, sm: 240 }} pt={85} src={HeroBg.src}>
           {" "}
           <Flex direction="column" align="center" justify="center">
             <Title
@@ -32,16 +33,18 @@ export const Hero = () => {
               // mt={87}
               fw={700}
               mb={30}
+              data-aos="fade-up"
             >
               Making deFi accessible to everyone
             </Title>
 
-            <Text fw={400} ta={"center"} maw={750} fz={20}>
-              Be a DeFi Master with CoreFi. Swap, Earn, Stake, Yield Farming, all in one decentralized, community driven
-              platform. Welcome home to DeFi.
+            <Text data-aos="fade-up" fw={400} ta={"center"} maw={750} fz={20}>
+              Be a DeFi Master with CoreFi. Swap, Earn, Stake, Yield Farming, Lending, Borrowing & Collaterals, all in
+              one decentralized, community driven platform. Welcome home to DeFi.
             </Text>
 
             <ButtonCommon
+              href={paths.SWAP}
               mt={30}
               bg={
                 "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
@@ -55,15 +58,30 @@ export const Hero = () => {
 
             <Box pt={88} w={"100%"} h={{ base: 700, sm: 600 }}>
               {/* thay video vao day */}
-              <AspectRatio display={{ base: "none", sm: "block" }} maw={1200} mx={"auto"} ratio={1200 / 651}>
-                <Image src={VideoExample} alt="" fill />
+              <AspectRatio
+                data-aos="fade-up"
+                // display={{ base: "none", sm: "block" }}
+                maw={1200}
+                mx={"auto"}
+                ratio={1200 / 651}
+              >
+                <video style={{ borderRadius: "20px" }} loop playsInline autoPlay={true} muted width="100%">
+                  <source src="/VidHero.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </AspectRatio>
 
-              <AspectRatio display={{ base: "block", sm: "none" }} maw={1200} mx={"auto"} ratio={750 / 1040}>
+              {/* <AspectRatio
+                data-aos="fade-up"
+                display={{ base: "block", sm: "none" }}
+                maw={1200}
+                mx={"auto"}
+                ratio={750 / 1040}
+              >
                 <Image src={VidMobile} alt="" fill />
-              </AspectRatio>
+              </AspectRatio> */}
 
-              <Flex
+              {/* <Flex
                 align={"center"}
                 mt={20}
                 maw={1128}
@@ -74,13 +92,13 @@ export const Hero = () => {
                 justify={"center"}
               >
                 {AdItem.map((item) => item.svg)}
-              </Flex>
+              </Flex> */}
             </Box>
           </Flex>{" "}
         </BackgroundImage>
         <Box>
           {" "}
-          <BackgroundImage display={{ base: "none", sm: "block" }} src={HomeBg2.src}>
+          <BackgroundImage bgr={"no-repeat"} display={{ base: "none", sm: "block" }} src={HomeBg2.src}>
             <Box w={1920} h={794}></Box>
           </BackgroundImage>
           <BackgroundImage

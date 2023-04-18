@@ -8,7 +8,7 @@ import { OfferContent } from "~/constants/HomeContent";
 export const ConnectLiquidity = () => {
   return (
     <Section>
-      <Box w={"100%"} mx={"auto"} maw={1029}>
+      <Box data-aos="fade-up" w={"100%"} mx={"auto"} maw={1029}>
         {/* <AspectRatio left={52} ratio={1131 / 1396}>
           {" "}
           <ConnectLidity />

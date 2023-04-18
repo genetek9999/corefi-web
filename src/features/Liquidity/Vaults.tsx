@@ -18,16 +18,16 @@ const vaultList: VaultItemProps[] = [
     version: "1",
     pair: "ETH/USDC",
     desc: "Manages your liquidity using a passive rebalancing strategy",
-    tvl: 447733,
-    used: "6.99",
+    tvl: 247973,
+    used: "8.99",
   },
   {
     status: "Active",
     version: "1",
     pair: "ETH/USDT",
     desc: "Manages your liquidity using a passive rebalancing strategy",
-    tvl: 447733,
-    used: "6.99",
+    tvl: 385863,
+    used: "5.43",
   },
 ];
 

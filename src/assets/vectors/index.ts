@@ -8,6 +8,9 @@ import ConnecLidityMb from "./ConnecLidityMb.svg";
 import ConnectLidity from "./ConnectLidity.svg";
 import DarkBall from "./DarkBall.svg";
 import Dex from "./Dex.svg";
+import Diagram from "./Diagram.svg";
+import DiagramMb from "./DiagramMb.svg";
+import Dot from "./Dot.svg";
 import IconMenuDao from "./IconMenuDao.svg";
 import IconMenuLiquidity from "./IconMenuLiquidity.svg";
 import IconMenuStaking from "./IconMenuStaking.svg";
@@ -28,8 +31,27 @@ import Mission6 from "./Mission6.svg";
 import Offer1 from "./Offer1.svg";
 import Offer2 from "./Offer2.svg";
 import Offer3 from "./Offer3.svg";
+import OfferAbout1 from "./OfferAbout1.svg";
+import OfferAbout2 from "./OfferAbout2.svg";
+import OfferAbout3 from "./OfferAbout3.svg";
+import OfferAbout4 from "./OfferAbout4.svg";
+import PartnerSvg from "./PartnerSvg.svg";
+import RewardWallet from "./RewardWallet.svg";
+import RoadMapSvg from "./RoadMapSvg.svg";
+import TokenomicSvg from "./TokenomicSvg.svg";
 
 export {
+  TokenomicSvg,
+  PartnerSvg,
+  RoadMapSvg,
+  OfferAbout1,
+  OfferAbout2,
+  OfferAbout3,
+  OfferAbout4,
+  DiagramMb,
+  Diagram,
+  Dot,
+  RewardWallet,
   Dex,
   DarkBall,
   ConnecLidityMb,

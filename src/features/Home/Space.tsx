@@ -19,6 +19,10 @@ export const Space = () => {
           pos={"absolute"}
         >
           <DarkBall />
+          <video loop playsInline autoPlay={true} muted width="100%">
+            <source src="/cards-video.webm" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </AspectRatio>
       </Box>
     </Section>

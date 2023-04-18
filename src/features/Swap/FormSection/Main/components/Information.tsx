@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 import { useSelectedToken, useSlippage, useValue } from "~/features/Swap/hooks";
 
-const GAS_FEE = 10.15;
+const GAS_FEE = 0.001;
 const PRICE_IMPACT = 0.06;
 
 export const Information = () => {

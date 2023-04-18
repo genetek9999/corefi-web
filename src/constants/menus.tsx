@@ -10,26 +10,26 @@ export const menuMainHeader = [
     withIcon: true,
     menu: [
       {
-        label: "CoreSwap",
+        label: "CoreFi Swap",
         desc: "Defi product builders",
         icon: <IconMenuSwap />,
         link: paths.SWAP,
       },
       {
         label: "Staking",
-        desc: "Investing in Web3 builders",
+        desc: "Stake and receive $COREFI",
         icon: <IconMenuStaking />,
         link: paths.STAKE,
       },
       {
         label: "Liquidity Vaults",
-        desc: "Investing in Web3 builders",
+        desc: "Support COREFI as well as other exchanges by providing liquidity.",
         icon: <IconMenuLiquidity />,
         link: paths.LIQUIDITY_VAULTS,
       },
       {
         label: "CoreDAO",
-        desc: "Investing in Web3 builders",
+        desc: "A long-term DAO governance framework",
         icon: <IconMenuDao />,
         link: paths.DAO,
       },
@@ -79,8 +79,8 @@ export const menuMainHeader = [
     menu: [],
   },
   {
-    label: "Campaign",
-    link: links.CAMPAIGN,
+    label: "Presale",
+    link: links.PRESALE,
     withIcon: false,
     menu: [],
   },
@@ -125,10 +125,10 @@ export const menuMainFooter = [
         label: "Whitepaper",
         link: links.WHITEPAPER,
       },
-      {
-        label: "Campaign",
-        link: links.CAMPAIGN,
-      },
+      // {
+      //   label: "Campaign",
+      //   link: links.PRESALE,
+      // },
     ],
   },
   {
@@ -136,7 +136,7 @@ export const menuMainFooter = [
     menu: [
       {
         label: "CoreSwap",
-        link: paths.ABOUT,
+        link: paths.SWAP,
       },
       {
         label: "Core Staking",
@@ -156,22 +156,18 @@ export const menuMainFooter = [
     category: "Legals",
     menu: [
       {
-        label: "Term & Conditions",
-        link: "",
-      },
-      {
-        label: "Privacy Policy",
-        link: "",
+        label: "Legal Disclaimer",
+        link: "https://docs.corefi.io/appendix/legal-disclaimer",
       },
     ],
   },
 ];
 
 export const menuSocial = [
-  {
-    icon: <BsYoutube />,
-    link: links.YOUTUBE,
-  },
+  // {
+  //   icon: <BsYoutube />,
+  //   link: links.YOUTUBE,
+  // },
   {
     icon: <BsTwitter />,
     link: links.TWITTER,
@@ -186,6 +182,10 @@ export const menuSocial = [
   },
   {
     icon: <BsTelegram />,
-    link: links.TELEGRAM,
+    link: links.TELEGRAM_ANNOUNCEMENT,
+  },
+  {
+    icon: <BsTelegram />,
+    link: links.TELEGRAM_GLOBAL,
   },
 ];

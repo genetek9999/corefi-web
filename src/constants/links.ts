@@ -3,7 +3,7 @@ export const paths = {
   MINT: "/mint",
   MINT_DUPLICATE: "/mint-duplicate",
   STAKING: "/staking",
-  ABOUT: "/about",
+  ABOUT: "/about-us",
   SWAP: "/swap",
   LIQUIDITY_VAULTS: "/liquidity-vaults",
   DAO: "/dao",
@@ -11,15 +11,16 @@ export const paths = {
 };
 
 export const links = {
-  WHITEPAPER: "https://google.com",
+  WHITEPAPER: "https://docs.corefi.io/",
   KYC: "https://google.com",
   AUDIT: "https://google.com",
   SAFU: "https://google.com",
-  BLOG: "https://google.com",
-  CAMPAIGN: "https://google.com",
+  BLOG: "https://medium.com/@corefitoken",
+  PRESALE: "https://google.com",
   YOUTUBE: "https://google.com",
-  MEDIUM: "https://google.com",
-  TWITTER: "https://google.com",
-  DISCORD: "https://google.com",
-  TELEGRAM: "https://google.com",
+  MEDIUM: "https://medium.com/@corefitoken",
+  TWITTER: "https://t.me/corefiannouncement",
+  DISCORD: "https://discord.com/invite/fezGv4s2wJ",
+  TELEGRAM_ANNOUNCEMENT: "https://t.me/corefiannouncement",
+  TELEGRAM_GLOBAL: "https://t.me/corefiglobal",
 };
