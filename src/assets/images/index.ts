@@ -6,6 +6,7 @@ import BgCorfiCommunityMb from "./BgCorfiCommunityMb.png";
 import BgCorfiStake2 from "./BgCorfiStake2.png";
 import BgCorfiStake from "./BgCorfiStake.png";
 import BgCorfiStakeMb from "./BgCorfiStakeMb.png";
+import BigBgBox from "./BigBgBox.png";
 import GalaxyLayer from "./GalaxyLayer.png";
 import HeroBg from "./HeroBg.png";
 import HomeBg2 from "./HomeBg2.png";
@@ -16,6 +17,7 @@ import VidMobile from "./VidMobile.png";
 import VideoExample from "./VideoExample.png";
 
 export {
+  BigBgBox,
   BgBox2,
   BgCorfiStakeMb,
   BgCordiStake2Mb,

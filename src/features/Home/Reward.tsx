@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { BgBox, BgCordiStake2Mb, BgCorfiStake, BgCorfiStake2, BgCorfiStakeMb } from "~/assets/images";
 import { RewardWallet } from "~/assets/vectors";
 import { ButtonCommon, Section } from "~/components";
+import { links } from "~/constants";
 
 export const Reward = () => {
   return (
@@ -84,6 +85,7 @@ const Content = () => {
             sx={{
               border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
+            href={"https://docs.corefi.io/"}
           >
             Explore all ↗
           </ButtonCommon>

@@ -5,6 +5,7 @@ import React from "react";
 import { BgBox } from "~/assets/images";
 import { Dex } from "~/assets/vectors";
 import { ButtonCommon, Section } from "~/components";
+import { paths } from "~/constants";
 import { NetworkContent1, OfferContent } from "~/constants/HomeContent";
 
 export const CorefiNetwork = () => {
@@ -76,6 +77,7 @@ const Content = () => (
           </Flex>
 
           <ButtonCommon
+            href={paths.SWAP}
             bg={
               "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
             }

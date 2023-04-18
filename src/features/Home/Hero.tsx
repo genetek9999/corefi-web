@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { HeroBg, HomeBg2, HomeBg2Mb, VidMobile, VideoExample } from "~/assets/images";
 import { ButtonCommon, Section } from "~/components";
+import { paths } from "~/constants";
 import { AdItem } from "~/constants/AdItem";
 
 export const Hero = () => {
@@ -42,6 +43,7 @@ export const Hero = () => {
             </Text>
 
             <ButtonCommon
+              href={paths.SWAP}
               mt={30}
               bg={
                 "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"

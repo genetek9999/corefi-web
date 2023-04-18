@@ -3,8 +3,9 @@ import { nanoid } from "nanoid";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { BgBox, BgCorfiCommunity, BgCorfiCommunityMb, BgCorfiStake2 } from "~/assets/images";
+import { BgBox, BgCorfiCommunity, BgCorfiCommunityMb, BgCorfiStake2, BigBgBox } from "~/assets/images";
 import { ButtonCommon, Section } from "~/components";
+import { paths } from "~/constants";
 import { CommunityContent } from "~/constants/HomeContent";
 
 export const CorefiCommunity = () => {
@@ -16,7 +17,7 @@ export const CorefiCommunity = () => {
           pos={"relative"}
           // h={448}
         >
-          <Image style={{ zIndex: -1 }} src={BgBox} alt="" fill />
+          <Image style={{ zIndex: -1 }} src={BigBgBox} alt="" fill />
           <Content />
         </Box>
       </Box>
@@ -74,8 +75,9 @@ const Content = () => {
             sx={{
               border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
+            href={paths.DAO}
           >
-            Explore all ↗
+            Vote ↗
           </ButtonCommon>
         </Box>
 

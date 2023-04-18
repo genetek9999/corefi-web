@@ -3,9 +3,10 @@ import { nanoid } from "nanoid";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { BgBox, BgCordiStake2Mb, BgCorfiStake, BgCorfiStake2, BgCorfiStakeMb } from "~/assets/images";
+import { BgBox, BgCordiStake2Mb, BgCorfiStake, BgCorfiStake2, BgCorfiStakeMb, BigBgBox } from "~/assets/images";
 import { Dex } from "~/assets/vectors";
 import { ButtonCommon, Section } from "~/components";
+import { paths } from "~/constants";
 import { NetworkContent1, OfferContent } from "~/constants/HomeContent";
 
 export const CorefiStake = () => {
@@ -17,7 +18,7 @@ export const CorefiStake = () => {
           pos={"relative"}
           // h={448}
         >
-          <Image style={{ zIndex: -1 }} src={BgBox} alt="" fill />
+          <Image style={{ zIndex: -1 }} src={BigBgBox} alt="" fill />
           <Content />
         </Box>
       </Box>
@@ -45,8 +46,15 @@ const Content = () => {
   }, []);
   return (
     <Box>
-      <Flex gap={24} py={{ base: 20, sm: 67 }} px={{ base: 15, lg: 100 }} direction={{ base: "column", sm: "row" }}>
-        <Box w={"100%"} maw={563} mih={427} py={{ base: 20, sm: 32 }} px={{ base: 14, sm: 28 }} pos={"relative"}>
+      <Flex
+        gap={{ base: 24, lg: 0 }}
+        pt={{ base: 20, sm: 67 }}
+        pb={{ base: 20, sm: 45 }}
+        pl={{ base: 15, lg: 100 }}
+        pr={{ base: 15, lg: 78 }}
+        direction={{ base: "column-reverse", sm: "row" }}
+      >
+        <Box w={"100%"} maw={563} h={427} py={{ base: 20, sm: 32 }} px={{ base: 14, sm: 28 }} pos={"relative"}>
           {" "}
           <Image style={{ zIndex: -1 }} src={isPc ? BgCorfiStake : BgCorfiStakeMb} alt="" fill />
           <Title mb={20} fz={{ base: 16, sm: 24 }}>
@@ -63,6 +71,7 @@ const Content = () => {
             sx={{
               border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
+            href={paths.LIQUIDITY_VAULTS}
           >
             Explore all ↗
           </ButtonCommon>
@@ -72,14 +81,13 @@ const Content = () => {
           mih={499}
           pos={"relative"}
           w={"100%"}
-          maw={550}
           sx={{
             boxShadow:
               "0px 0px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px rgba(0, 0, 0, 0.02), 0px 16px 24px rgba(0, 0, 0, 0.02), 0px 24px 32px rgba(0, 0, 0, 0.02)",
             borderRadius: "24px",
           }}
-          py={32}
-          px={{ base: 0, sm: 28 }}
+          pb={32}
+          pl={{ base: 0, sm: 28 }}
         >
           <Image style={{ zIndex: -1 }} src={isPc ? BgCorfiStake2 : BgCordiStake2Mb} alt="" fill />
           <Link href={""}>
@@ -102,11 +110,12 @@ const Content = () => {
             {" "}
             CoreFi Stake
           </Title>
-          <Text opacity={0.8} fw={400} fz={{ base: 12, sm: 20 }}>
+          <Text opacity={0.8} fw={400} fz={{ base: 12, sm: 16 }}>
             Stake COREFI to participate in network governance and be eligible for gas costs refunds.
           </Text>
 
           <ButtonCommon
+            href={paths.SWAP}
             mt={28}
             bg={
               "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
@@ -115,7 +124,7 @@ const Content = () => {
               border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
           >
-            Explore all ↗
+            Stake now ↗
           </ButtonCommon>
         </Box>
       </Flex>
