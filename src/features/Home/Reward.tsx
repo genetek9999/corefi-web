@@ -54,7 +54,7 @@ const Content = () => {
         <Box w={"100%"} maw={563} py={{ base: 20, sm: 32 }} px={{ base: 14, sm: 28 }} pos={"relative"}>
           <Link href={""}>
             {" "}
-            <Text mb={{ base: 12, sm: 8 }} fw={400} fz={{ base: 16, sm: 18 }}>
+            <Text data-aos="fade-up" mb={{ base: 12, sm: 8 }} fw={400} fz={{ base: 16, sm: 18 }}>
               COREFI NETWORK →
             </Text>
           </Link>
@@ -68,11 +68,12 @@ const Content = () => {
             mb={{ base: 20, sm: 28 }}
             fw={600}
             fz={{ base: 24, sm: 44 }}
+            data-aos="fade-up"
           >
             {" "}
             Get rewarded for providing protection.
           </Title>
-          <Text opacity={0.8} fw={400} fz={{ base: 12, sm: 20 }}>
+          <Text data-aos="fade-up" opacity={0.8} fw={400} fz={{ base: 12, sm: 20 }}>
             Invest capital with Core-AntiRisk and earn additional rewards on already productive assets. Leverage dynamic
             risk assessment data to allocate funds safely and efficiently.
           </Text>
@@ -86,12 +87,14 @@ const Content = () => {
               border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
             href={"https://docs.corefi.io/"}
+            data-aos="fade-up"
           >
             Explore all ↗
           </ButtonCommon>
         </Box>
 
         <AspectRatio
+          data-aos="fade-up"
           pos={"relative"}
           w={"100%"}
           maw={550}

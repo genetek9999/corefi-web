@@ -21,7 +21,7 @@ export const RoadMap = () => {
 
       <Box display={{ base: "none", sm: "block" }}>
         {" "}
-        <AspectRatio ratio={1541 / 1509}>
+        <AspectRatio data-aos="fade-up" ratio={1541 / 1509}>
           <RoadMapSvg />
         </AspectRatio>
       </Box>
@@ -30,6 +30,7 @@ export const RoadMap = () => {
         <Flex gap={30} direction={"column"}>
           {RoadmapContent.map((item) => (
             <Box
+              data-aos="fade-up"
               p={20}
               bg={
                 "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.02) 0.01%, rgba(255, 255, 255, 0.1) 100%)"

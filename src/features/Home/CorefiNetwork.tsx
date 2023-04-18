@@ -39,20 +39,21 @@ const Content = () => (
         {" "}
         <Link href={NetworkContent1.link}>
           {" "}
-          <Text mb={8} fw={400} fz={{ sm: 18 }}>
+          <Text data-aos="fade-up" mb={8} fw={400} fz={{ sm: 18 }}>
             {NetworkContent1.text}
           </Text>
         </Link>
-        <Title mb={28} fw={600} fz={{ sm: 44 }}>
+        <Title data-aos="fade-up" mb={28} fw={600} fz={{ sm: 44 }}>
           {" "}
           {NetworkContent1.title}
         </Title>
-        <Text opacity={0.8} fw={400} fz={{ sm: 20 }}>
+        <Text data-aos="fade-up" opacity={0.8} fw={400} fz={{ sm: 20 }}>
           {NetworkContent1.content}
         </Text>
       </Box>
 
       <Box
+        data-aos="fade-up"
         w={"100%"}
         maw={590}
         sx={{

@@ -18,8 +18,9 @@ export const links = {
   BLOG: "https://medium.com/@corefitoken",
   PRESALE: "https://google.com",
   YOUTUBE: "https://google.com",
-  MEDIUM: "https://google.com",
-  TWITTER: "https://google.com",
-  DISCORD: "https://google.com",
-  TELEGRAM: "https://google.com",
+  MEDIUM: "https://medium.com/@corefitoken",
+  TWITTER: "https://t.me/corefiannouncement",
+  DISCORD: "https://discord.com/invite/fezGv4s2wJ",
+  TELEGRAM_ANNOUNCEMENT: "https://t.me/corefiannouncement",
+  TELEGRAM_GLOBAL: "https://t.me/corefiglobal",
 };

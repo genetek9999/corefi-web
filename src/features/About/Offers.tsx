@@ -17,10 +17,10 @@ export const Offers = () => {
         size={1537}
         sx={{ borderRadius: "24px" }}
       >
-        <Title mb={32} fz={{ base: 24, sm: 56 }} ta={"center"}>
+        <Title data-aos="fade-up" mb={32} fz={{ base: 24, sm: 56 }} ta={"center"}>
           What CoreFi offers?
         </Title>
-        <Text ta={"center"} maw={1014} mx={"auto"} fz={{ sm: 24 }}>
+        <Text data-aos="fade-up" ta={"center"} maw={1014} mx={"auto"} fz={{ sm: 24 }}>
           Core Finance allows token holders to play a critical role in building a wide base of stakeholders and
           capturing value created by new innovations on COREFI Network. COREFI holders stake and vote to receive trading
           fees from protocols in the network. As more trades are executed and new protocols added, more rewards are
@@ -30,6 +30,7 @@ export const Offers = () => {
         <Flex justify={"center"} align={"center"} wrap={"wrap"} mt={60} gap={36}>
           {OfferContentAbout.map((item) => (
             <Flex
+              data-aos="fade-up"
               mih={278}
               maw={317}
               justify={"center"}

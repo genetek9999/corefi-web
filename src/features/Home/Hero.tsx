@@ -33,13 +33,14 @@ export const Hero = () => {
               // mt={87}
               fw={700}
               mb={30}
+              data-aos="fade-up"
             >
               Making deFi accessible to everyone
             </Title>
 
-            <Text fw={400} ta={"center"} maw={750} fz={20}>
-              Be a DeFi Master with CoreFi. Swap, Earn, Stake, Yield Farming, all in one decentralized, community driven
-              platform. Welcome home to DeFi.
+            <Text data-aos="fade-up" fw={400} ta={"center"} maw={750} fz={20}>
+              Be a DeFi Master with CoreFi. Swap, Earn, Stake, Yield Farming, Lending, Borrowing & Collaterals, all in
+              one decentralized, community driven platform. Welcome home to DeFi.
             </Text>
 
             <ButtonCommon
@@ -57,11 +58,23 @@ export const Hero = () => {
 
             <Box pt={88} w={"100%"} h={{ base: 700, sm: 600 }}>
               {/* thay video vao day */}
-              <AspectRatio display={{ base: "none", sm: "block" }} maw={1200} mx={"auto"} ratio={1200 / 651}>
+              <AspectRatio
+                data-aos="fade-up"
+                display={{ base: "none", sm: "block" }}
+                maw={1200}
+                mx={"auto"}
+                ratio={1200 / 651}
+              >
                 <Image src={VideoExample} alt="" fill />
               </AspectRatio>
 
-              <AspectRatio display={{ base: "block", sm: "none" }} maw={1200} mx={"auto"} ratio={750 / 1040}>
+              <AspectRatio
+                data-aos="fade-up"
+                display={{ base: "block", sm: "none" }}
+                maw={1200}
+                mx={"auto"}
+                ratio={750 / 1040}
+              >
                 <Image src={VidMobile} alt="" fill />
               </AspectRatio>
 

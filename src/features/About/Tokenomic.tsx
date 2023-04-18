@@ -20,30 +20,32 @@ export const Tokenomic = () => {
       >
         <Flex direction={{ base: "column", lg: "row" }} gap={70}>
           <Flex direction={"column"} justify={"center"} maw={446}>
-            <Title mb={24} fw={600} fz={{ base: 24, sm: 56 }}>
+            <Title data-aos="fade-up" mb={24} fw={600} fz={{ base: 24, sm: 56 }}>
               Tokenomics
             </Title>
 
-            <Text mb={48} fz={{ base: 12, sm: 24 }}>
+            <Text data-aos="fade-up" mb={48} fz={{ base: 12, sm: 24 }}>
               The COREFI token is an integral part of the CoreFi ecosystem, serving as a key utility token that enables
               users to access a range of features and benefits.
             </Text>
 
-            <Text c={"#CBC3FF"} mb={28} fz={{ base: 12, sm: 24 }}>
+            <Text data-aos="fade-up" c={"#CBC3FF"} mb={28} fz={{ base: 12, sm: 24 }}>
               The public token distribution.
             </Text>
 
-            <Text c={"#CBC3FF"} mb={28} fz={{ base: 12, sm: 24 }}>
+            <Text data-aos="fade-up" c={"#CBC3FF"} mb={28} fz={{ base: 12, sm: 24 }}>
               Cross-chain incentives.
             </Text>
 
-            <Text c={"#CBC3FF"} mb={40} fz={{ base: 12, sm: 24 }}>
+            <Text data-aos="fade-up" c={"#CBC3FF"} mb={40} fz={{ base: 12, sm: 24 }}>
               The Ecosystem Support Program.
             </Text>
 
-            <Text fz={{ base: 12, sm: 24 }}>More information is available in our detailed Tokenomics article.</Text>
+            <Text data-aos="fade-up" fz={{ base: 12, sm: 24 }}>
+              More information is available in our detailed Tokenomics article.
+            </Text>
           </Flex>
-          <TokenomicSvg />
+          <TokenomicSvg data-aos="fade-up" />
         </Flex>
       </Container>
     </Section>

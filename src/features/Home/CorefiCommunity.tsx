@@ -49,10 +49,11 @@ const Content = () => {
         <Box w={"100%"} maw={563} mih={427} py={{ base: 20, sm: 32 }} px={{ base: 20, sm: 28 }} pos={"relative"}>
           {" "}
           <Image style={{ zIndex: -1 }} src={isPc ? BgCorfiCommunity : BgCorfiCommunityMb} alt="" fill />
-          <Text mb={16} fw={400} fz={{ sm: 18 }}>
+          <Text data-aos="fade-up" mb={16} fw={400} fz={{ sm: 18 }}>
             COREFI NETWORK →
           </Text>
           <Title
+            data-aos="fade-up"
             sx={{
               background: " linear-gradient(180deg, #FFFFFF 22.5%, rgba(255, 255, 255, 0.7) 100%)",
               "-webkit-background-clip": "text",
@@ -64,7 +65,7 @@ const Content = () => {
           >
             Governed by the community.
           </Title>
-          <Text fz={{ base: 12, sm: 16 }} opacity={0.8}>
+          <Text data-aos="fade-up" fz={{ base: 12, sm: 16 }} opacity={0.8}>
             The CoreFi Network is managed by a global community of COREFI token holders and delegates.
           </Text>
           <ButtonCommon
@@ -76,6 +77,7 @@ const Content = () => {
               border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
             href={paths.DAO}
+            data-aos="fade-up"
           >
             Vote ↗
           </ButtonCommon>
@@ -83,7 +85,12 @@ const Content = () => {
 
         <Flex gap={24} direction={"column"} w={"100%"}>
           {CommunityContent.map((item) => (
-            <Box p={25} sx={{ borderRadius: "24px", border: "1px solid rgba(255, 255, 255, 0.1)" }} key={nanoid()}>
+            <Box
+              data-aos="fade-up"
+              p={25}
+              sx={{ borderRadius: "24px", border: "1px solid rgba(255, 255, 255, 0.1)" }}
+              key={nanoid()}
+            >
               <Title mb={13} fz={{ sm: 20 }}>
                 {" "}
                 {item.title}

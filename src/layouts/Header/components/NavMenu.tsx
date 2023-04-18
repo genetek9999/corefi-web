@@ -73,7 +73,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ isVertical = false, isSubMenuItem =
             : {}
         }
       >
-        <Text fw={500} tt="capitalize" {...props}>
+        <Text fw={500} tt="uppercase" {...props}>
           {label}
         </Text>
       </Box>

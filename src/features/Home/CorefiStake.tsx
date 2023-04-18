@@ -57,13 +57,14 @@ const Content = () => {
         <Box w={"100%"} maw={563} h={427} py={{ base: 20, sm: 32 }} px={{ base: 14, sm: 28 }} pos={"relative"}>
           {" "}
           <Image style={{ zIndex: -1 }} src={isPc ? BgCorfiStake : BgCorfiStakeMb} alt="" fill />
-          <Title mb={20} fz={{ base: 16, sm: 24 }}>
+          <Title data-aos="fade-up" mb={20} fz={{ base: 16, sm: 24 }}>
             Liquidity Vaults for long-term investors
           </Title>
-          <Text fz={{ base: 12, sm: 16 }} opacity={0.8}>
+          <Text data-aos="fade-up" fz={{ base: 12, sm: 16 }} opacity={0.8}>
             A next-generation AMM that offers capital efficiency to liquidity providers.
           </Text>
           <ButtonCommon
+            data-aos="fade-up"
             mt={{ base: 20, sm: 48 }}
             bg={
               "radial-gradient(65% 65% at 50% 50%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(255, 255, 255, 0.04)"
@@ -92,7 +93,7 @@ const Content = () => {
           <Image style={{ zIndex: -1 }} src={isPc ? BgCorfiStake2 : BgCordiStake2Mb} alt="" fill />
           <Link href={""}>
             {" "}
-            <Text mb={{ base: 12, sm: 8 }} fw={400} fz={{ base: 16, sm: 18 }}>
+            <Text data-aos="fade-up" mb={{ base: 12, sm: 8 }} fw={400} fz={{ base: 16, sm: 18 }}>
               COREFI NETWORK →
             </Text>
           </Link>
@@ -106,11 +107,12 @@ const Content = () => {
             mb={{ base: 20, sm: 28 }}
             fw={600}
             fz={{ base: 24, sm: 44 }}
+            data-aos="fade-up"
           >
             {" "}
             CoreFi Stake
           </Title>
-          <Text opacity={0.8} fw={400} fz={{ base: 12, sm: 16 }}>
+          <Text data-aos="fade-up" opacity={0.8} fw={400} fz={{ base: 12, sm: 16 }}>
             Stake COREFI to participate in network governance and be eligible for gas costs refunds.
           </Text>
 
@@ -123,6 +125,7 @@ const Content = () => {
             sx={{
               border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
+            data-aos="fade-up"
           >
             Stake now ↗
           </ButtonCommon>

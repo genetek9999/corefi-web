@@ -25,10 +25,10 @@ export const OurMission = () => {
       >
         <Flex align={"center"} direction={{ base: "column", lg: "row" }} gap={20}>
           <Box w={{ base: "100%", lg: "50%" }}>
-            <Text c={"white"} mb={12} fz={24} fw={400}>
+            <Text data-aos="fade-up" c={"white"} mb={12} fz={24} fw={400}>
               Our Mission
             </Text>
-            <Title fz={{ sm: 56 }} fw={600}>
+            <Title data-aos="fade-up" fz={{ sm: 56 }} fw={600}>
               Providing top-notch qualities
             </Title>
 

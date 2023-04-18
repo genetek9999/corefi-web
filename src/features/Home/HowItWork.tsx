@@ -12,6 +12,7 @@ export const HowItWork = () => {
     <Section>
       <Box>
         <Title
+          data-aos="fade-up"
           ta={"center"}
           fz={{ base: 24, sm: 56 }}
           sx={{
@@ -29,7 +30,7 @@ export const HowItWork = () => {
           <Flex mb={30} px={{ sm: 40 }} py={{ sm: 42 }} gap={30} direction={"column"} pos={"relative"}>
             <Image src={BgBox2} alt="" fill />
             {HowItWorkContent.map((item) => (
-              <Group key={nanoid()}>
+              <Group data-aos="fade-up" key={nanoid()}>
                 <Dot />
                 {item.content}
               </Group>
@@ -56,7 +57,7 @@ export const HowItWork = () => {
                 py={17}
                 px={20}
               >
-                <Text fw={500} fz={14} maw={283} mx={"auto"} ta={"center"}>
+                <Text data-aos="fade-up" fw={500} fz={14} maw={283} mx={"auto"} ta={"center"}>
                   {" "}
                   {item.content}
                 </Text>
@@ -65,11 +66,11 @@ export const HowItWork = () => {
           </Flex>
         </Box>
 
-        <Box display={{ base: "none", sm: "block" }}>
+        <Box data-aos="fade-up" display={{ base: "none", sm: "block" }}>
           <Diagram />
         </Box>
 
-        <Box display={{ base: "block", sm: "none" }}>
+        <Box data-aos="fade-up" display={{ base: "block", sm: "none" }}>
           <DiagramMb />
         </Box>
       </Box>

@@ -9,6 +9,7 @@ export const Offers = () => {
     <Section>
       {/* <Box w={100} bg={"red"} h={100}></Box> */}
       <Box
+        data-aos="fade-up"
         maw={290}
         sx={{
           border: "1px solid rgba(255, 255, 255, 0.04)",
@@ -25,13 +26,14 @@ export const Offers = () => {
         </Text>
       </Box>
 
-      <Title mb={60} ta={"center"} fw={700} fz={{ sm: 56 }}>
+      <Title data-aos="fade-up" mb={60} ta={"center"} fw={700} fz={{ sm: 56 }}>
         What CoreFi offers?
       </Title>
 
       <Flex wrap={{ base: "wrap", lg: "unset" }} gap={30} justify={"center"}>
         {OfferContent.map((item) => (
           <Flex
+            data-aos="fade-up"
             w={{ base: "100%", sm: "33.33%" }}
             sx={{
               border: "1px solid rgba(255, 255, 255, 0.2)",

@@ -164,10 +164,10 @@ export const menuMainFooter = [
 ];
 
 export const menuSocial = [
-  {
-    icon: <BsYoutube />,
-    link: links.YOUTUBE,
-  },
+  // {
+  //   icon: <BsYoutube />,
+  //   link: links.YOUTUBE,
+  // },
   {
     icon: <BsTwitter />,
     link: links.TWITTER,
@@ -182,6 +182,10 @@ export const menuSocial = [
   },
   {
     icon: <BsTelegram />,
-    link: links.TELEGRAM,
+    link: links.TELEGRAM_ANNOUNCEMENT,
+  },
+  {
+    icon: <BsTelegram />,
+    link: links.TELEGRAM_GLOBAL,
   },
 ];
