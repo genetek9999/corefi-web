@@ -25,7 +25,8 @@ export const Tokenomic = () => {
             </Title>
 
             <Text mb={48} fz={{ base: 12, sm: 24 }}>
-              58.3% of the genesis Flare supply is allocated to the community via:
+              The COREFI token is an integral part of the CoreFi ecosystem, serving as a key utility token that enables
+              users to access a range of features and benefits.
             </Text>
 
             <Text c={"#CBC3FF"} mb={28} fz={{ base: 12, sm: 24 }}>

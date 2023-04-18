@@ -65,7 +65,7 @@ export const Hero = () => {
                 <Image src={VidMobile} alt="" fill />
               </AspectRatio>
 
-              <Flex
+              {/* <Flex
                 align={"center"}
                 mt={20}
                 maw={1128}
@@ -76,7 +76,7 @@ export const Hero = () => {
                 justify={"center"}
               >
                 {AdItem.map((item) => item.svg)}
-              </Flex>
+              </Flex> */}
             </Box>
           </Flex>{" "}
         </BackgroundImage>

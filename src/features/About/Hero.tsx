@@ -9,12 +9,12 @@ export const Hero = () => {
   return (
     <Section maw={1920}>
       <Title mt={100} ta={"center"} mb={24} fz={{ base: 30, sm: 64 }}>
-        Kyber Network Crystal (KNC)
+        Core Finance (COREFU)
       </Title>
 
       <Text ta={"center"} maw={750} mx={"auto"} fz={20}>
-        KNC is a utility and governance token and an integral part of Kyber Network. The glue that connects different
-        stakeholders in Kyber&apos;s ecosystem.
+        COREFI plays a crucial role in Core Finance as both a utility and governance token, serving as the binding force
+        that links various stakeholders within the ecosystem of COREFI.
       </Text>
 
       <Center>

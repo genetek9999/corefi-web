@@ -15,7 +15,7 @@ const LiquidityVaults: NextPage = () => {
 
       <RoadMap />
 
-      <Partner />
+      {/* <Partner /> */}
 
       <Tokenomic />
 
