@@ -1,5 +1,7 @@
 import { AspectRatio, type AspectRatioProps } from "@mantine/core";
+import Image from "next/image";
 import React from "react";
+import { LogoAlter } from "~/assets/images";
 import { Logo, LogoTextHorizontal, LogoTextVertical } from "~/assets/vectors";
 import { paths } from "~/constants";
 
@@ -28,8 +30,8 @@ const LogoComponent: React.FC<Props> = ({ variant, ...props }) => {
 
     case "text-vertical":
       return (
-        <AspectRatio w={58} ratio={58 / 91} {...props}>
-          <LogoTextVertical />
+        <AspectRatio w={58} ratio={59 / 92} {...props}>
+          <Image src={LogoAlter} alt="" fill />
         </AspectRatio>
       );
 
