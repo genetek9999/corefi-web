@@ -1,5 +1,5 @@
 export const keys = {
-  PRELOAD_TIMEOUT: 1000,
+  PRELOAD_TIMEOUT: 2500,
   STAKE_FEE: 0,
   STAKE_APY: 500,
   STAKE_DURATION: "30D",

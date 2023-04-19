@@ -13,7 +13,7 @@ export const HybridLink: React.FC<HybridLinkProps> = ({ children, href, ...props
   return (
     <Link
       scroll={href === paths.HOME}
-      {...(featurePaths.includes(href)
+      {...(featurePaths.includes(href) && window.location.pathname === "/"
         ? {}
         : href !== paths.HOME && !href.includes("#")
         ? { target: "_blank", rel: "noopener noreferrer" }

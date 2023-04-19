@@ -64,3 +64,37 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Proposal {
+    id        String   @id @default(cuid())
+    title     String
+    desc      String?  @db.LongText
+    core      Boolean  @default(false)
+    opened    Boolean  @default(true)
+    dueTo     DateTime
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    Wallet    Wallet   @relation(fields: [walletId], references: [id])
+    walletId  String
+    Votes     Vote[]
+}
+
+model Wallet {
+    id        String     @id
+    createdAt DateTime   @default(now())
+    proposals Proposal[]
+}
+
+model Vote {
+    id         String   @id @default(cuid())
+    type       VoteType
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+    proposalId String
+    Proposal   Proposal @relation(fields: [proposalId], references: [id])
+}
+
+enum VoteType {
+    FOR
+    AGAINST
+}
