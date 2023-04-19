@@ -42,10 +42,9 @@ export const OurMission = () => {
                   <Line />
                 </AspectRatio>
               </Box>
-              <Flex justify={"center"} gap={28} direction={"column"}>
+              <Flex data-aos="fade-up" justify={"center"} gap={28} direction={"column"}>
                 {MissionContent.map((item) => (
                   <Text
-                    data-aos="fade-up"
                     onClick={() => {
                       setCurrentTab(item);
                     }}
