@@ -27,12 +27,12 @@ export const menuMainHeader = [
         icon: <IconMenuLiquidity />,
         link: paths.LIQUIDITY_VAULTS,
       },
-      {
-        label: "CoreDAO",
-        desc: "A long-term DAO governance framework",
-        icon: <IconMenuDao />,
-        link: paths.DAO,
-      },
+      // {
+      //   label: "CoreDAO",
+      //   desc: "A long-term DAO governance framework",
+      //   icon: <IconMenuDao />,
+      //   link: paths.DAO,
+      // },
     ],
   },
   {
@@ -105,12 +105,12 @@ export const menuFeatureHeader = [
     withIcon: false,
     menu: [],
   },
-  {
-    label: "DAO",
-    link: paths.DAO,
-    withIcon: false,
-    menu: [],
-  },
+  // {
+  //   label: "DAO",
+  //   link: paths.DAO,
+  //   withIcon: false,
+  //   menu: [],
+  // },
 ];
 
 export const menuMainFooter = [
@@ -146,10 +146,10 @@ export const menuMainFooter = [
         label: "Liquidity Vaults",
         link: paths.LIQUIDITY_VAULTS,
       },
-      {
-        label: "CoreDAO",
-        link: paths.DAO,
-      },
+      // {
+      //   label: "CoreDAO",
+      //   link: paths.DAO,
+      // },
     ],
   },
   {

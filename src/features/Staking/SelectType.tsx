@@ -1,28 +1,24 @@
 import { SegmentedControl } from "@mantine/core";
 import React, { memo } from "react";
+import { type IStakeOption } from "~/hooks/useStaking";
+
+import { useSelectOption } from "./hooks/useSelectOption";
 
 type Props = {
-  stakeType: NodeJS.Dict<{
-    label: string;
-    value: string;
-  }>;
-  selectedStakeId: string;
-  setSelectedStakeId: React.Dispatch<React.SetStateAction<string>>;
+  optionList: IStakeOption[];
 };
 
-const _SelectType: React.FC<Props> = ({ stakeType, selectedStakeId, setSelectedStakeId }) => {
+const _SelectType: React.FC<Props> = ({ optionList }) => {
+  const [selectedStakeId, setSelectedStakeId] = useSelectOption((state) => [state.value, state.setValue]);
+
   return (
     <SegmentedControl
       mt="md"
       radius="md"
-      data={
-        stakeType
-          ? Object.values(stakeType).map((item) => ({
-              label: item?.label || "",
-              value: item?.value || "",
-            }))
-          : []
-      }
+      data={optionList.map((item) => ({
+        label: item.duration,
+        value: item.id,
+      }))}
       fullWidth
       color="blue"
       value={selectedStakeId}

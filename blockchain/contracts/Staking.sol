@@ -168,10 +168,23 @@ contract Staking is Ownable, ReentrancyGuard {
     uint256 public stakeFee = 1; // stake fee by %
     uint256 public unstakeFee = 20; // unstake fee by %
 
+    enum HistoryType {
+        STAKE,
+        UNSTAKE,
+        CLAIM
+    }
+
+    struct UserStakeHistory {
+        address user;
+        uint256 amount;
+        uint256 created_at;
+        HistoryType history_type;
+    }
+
     // struct of option to stake
     struct Stake {
         uint256 duration;
-        uint256 apy; // 1% == 100
+        uint256 apy; // 1% == 0.01
     }
 
     // struct of staking by user
@@ -189,6 +202,8 @@ contract Staking is Ownable, ReentrancyGuard {
     event NewStaking(uint256 indexed id, address indexed stakinger); // event staking by user
     event Claimed(uint256 indexed id); // event claim by user
 
+    UserStakeHistory[] userStakeHistory;
+
     IERC20 public tokenStaking; // token used for staking and claiming
 
     uint256 public constant WAITING_TIME_TO_UNSTAKE = 2 minutes; // waiting claim if not enough staking time
@@ -196,6 +211,8 @@ contract Staking is Ownable, ReentrancyGuard {
     mapping(uint256 => Stake) public stakes; // map (option stake) id to option stake
     uint256 public totalUserStake; // total staking by user
     mapping(uint256 => UserStake) public userStakes; // map (staking by user) id to staking by user
+
+    mapping(address => uint256[]) private userStakeIdList; // map staker address to staking's id
 
     mapping(address => uint256) public earned; // mapping user address to rewards they will claim
 
@@ -239,13 +256,13 @@ contract Staking is Ownable, ReentrancyGuard {
     }
 
     function updateStakeFee(uint256 _newStakeFee) public onlyOwner {
-        require(_newStakeFee <= 100, "Invalid fee!");
+        require(_newStakeFee <= 100 && _newStakeFee > 0, "Invalid fee!");
 
         stakeFee = _newStakeFee;
     }
 
     function updateUnstakeFee(uint256 _newUnstakeFee) public onlyOwner {
-        require(_newUnstakeFee <= 100, "Invalid fee!");
+        require(_newUnstakeFee <= 100 && _newUnstakeFee > 0, "Invalid fee!");
 
         unstakeFee = _newUnstakeFee;
     }
@@ -257,12 +274,20 @@ contract Staking is Ownable, ReentrancyGuard {
     }
 
     // withdraw an amount of tokens from contract to owner
-    function withdraw(uint256 _amount) external onlyOwner {
+    function withdrawAmount(uint256 _amount) external onlyOwner {
         uint256 balance = tokenStaking.balanceOf(address(this));
 
         require(_amount < balance, "Invalid amount!");
 
         tokenStaking.transfer(msg.sender, _amount);
+    }
+
+    function getUserStakeIdList(address _address) public view returns (uint256[] memory) {
+        return userStakeIdList[_address];
+    }
+
+    function getAllUserStakeHistory() public view returns (UserStakeHistory[] memory) {
+        return userStakeHistory;
     }
 
     // stake tokens by user
@@ -283,10 +308,14 @@ contract Staking is Ownable, ReentrancyGuard {
         userStakes[totalUserStake].amount = realAmount;
         userStakes[totalUserStake].start = block.timestamp;
 
-        emit NewStaking(totalUserStake, sender);
+        userStakeIdList[sender].push(totalUserStake);
+
+        userStakeHistory.push(UserStakeHistory(sender, realAmount, block.timestamp, HistoryType.STAKE));
 
         totalUserStake++;
         totalStakedAmount += realAmount;
+
+        emit NewStaking(totalUserStake, sender);
     }
 
     // claim or unstake tokens by user
@@ -319,6 +348,10 @@ contract Staking is Ownable, ReentrancyGuard {
 
                 userStakes[_id].claimed = true;
 
+                totalStakedAmount -= uStake_.amount;
+
+                userStakeHistory.push(UserStakeHistory(sender, reward_, block.timestamp, HistoryType.CLAIM));
+
                 emit Claimed(_id);
             }
         }
@@ -326,11 +359,15 @@ contract Staking is Ownable, ReentrancyGuard {
         else {
             require(block.timestamp >= uStake_.claimTime, "Unable to claim yet!");
 
-            uint256 realAmount = uStake_.amount * (1 - (unstakeFee / 100));
+            uint256 realAmount = (uStake_.amount * (100 - unstakeFee)) / 100;
 
             require(tokenStaking.transfer(sender, realAmount));
 
             userStakes[_id].claimed = true;
+
+            totalStakedAmount -= uStake_.amount;
+
+            userStakeHistory.push(UserStakeHistory(sender, realAmount, block.timestamp, HistoryType.UNSTAKE));
 
             emit Claimed(_id);
         }
@@ -355,6 +392,6 @@ contract Staking is Ownable, ReentrancyGuard {
             : stake_.duration; // time = staking duration
 
         // for example, let's say the apy is 100% => apy value will be 100 * 100 = 10,000
-        return (uStake_.amount * stake_.apy * time_) / (1e5 * 365 days); // 1e5 * 365 days = 100,000 * 365 = 36,500,000
+        return (uStake_.amount * stake_.apy * time_) / (100 * 365 days);
     }
 }

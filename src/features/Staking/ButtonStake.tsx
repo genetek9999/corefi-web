@@ -8,19 +8,19 @@ import { useTokenContext } from "~/contexts/tokenContext";
 import { useStaking } from "~/hooks/useStaking";
 import { parseEther } from "~/libs/ethers";
 
+import { useSelectOption } from "./hooks/useSelectOption";
+import { useStakeAmount } from "./hooks/useStakeAmount";
+import { useStakeAmountNumber } from "./hooks/useStakeAmountNumber";
+
 const STAKING_ADDRESS = contracts.staking;
 
 const stakeAmountSchema = z.number().gt(0);
 
-type Props = {
-  stakeAmountNumber?: number;
-  selectedStakeId: string;
-  stakeAmount?: string;
-  setStakeAmount?: React.Dispatch<React.SetStateAction<string>>;
-};
-
-const _ButtonStake: React.FC<Props> = ({ stakeAmountNumber, stakeAmount, selectedStakeId, setStakeAmount }) => {
+const _ButtonStake = () => {
   const { balance, getAllowance, approve, getBalance } = useTokenContext();
+  const selectedStakeId = useSelectOption((state) => state.value);
+  const [stakeAmount, setStakeAmount] = useStakeAmount((state) => [state.value, state.setValue]);
+  const stakeAmountNumber = useStakeAmountNumber((state) => state.value);
 
   const { stake } = useStaking();
   const [isStaking, setIsStaking] = useState(false);
@@ -38,7 +38,7 @@ const _ButtonStake: React.FC<Props> = ({ stakeAmountNumber, stakeAmount, selecte
 
         const amountEther = parseEther(stakeAmount);
 
-        if (getAllowance) {
+        if (getAllowance && selectedStakeId) {
           const allowance = await getAllowance(STAKING_ADDRESS);
 
           console.log("allowance checked", allowance);

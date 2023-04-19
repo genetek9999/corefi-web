@@ -18,6 +18,7 @@ const server = z.object({
   // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
   // DISCORD_CLIENT_ID: z.string(),
   // DISCORD_CLIENT_SECRET: z.string(),
+  RPC_UCL: z.string().optional(),
 });
 
 /**
@@ -52,6 +53,7 @@ const processEnv = {
   NEXT_PUBLIC_NEW_RPC_URL: process.env.NEXT_PUBLIC_NEW_RPC_URL,
   NEXT_PUBLIC_SYMBOL: process.env.NEXT_PUBLIC_SYMBOL,
   NEXT_PUBLIC_CURRENCY_DECIMALS: process.env.NEXT_PUBLIC_CURRENCY_DECIMALS,
+  RPC_UCL: process.env.NEXT_PUBLIC_NEW_RPC_URL,
 };
 
 // Don't touch the part below

@@ -10,7 +10,7 @@ export const Hero = () => {
       </Title>
 
       <Text fz={{ sm: 20 }} ta="center" mt={20} mb={40}>
-        The easiest way to provide liquidity on Uniswap V3
+        The easiest way to provide liquidity on CoreFi
       </Text>
 
       <Center>
