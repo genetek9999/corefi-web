@@ -90,6 +90,6 @@ export const HowItWorkContent = [
   },
   {
     content:
-      "10% seigniorage of COREFI tokens is allocated to the DAO community. 70% of the transaction fee is allocated to repurchase COREFI and 30% to ve (NEC).",
+      "10% seigniorage of COREFI tokens is allocated to the DAO community. 70% of the transaction fee is allocated to repurchase COREFI and 30% to veCOREFI.",
   },
 ];

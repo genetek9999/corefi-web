@@ -5,6 +5,8 @@ import { DarkBall } from "~/assets/vectors";
 import { Section } from "~/components";
 import { OfferContent } from "~/constants/HomeContent";
 
+import VideoPlayer from "./Components/Video";
+
 export const Space = () => {
   return (
     <Section py={0} mt={{ base: -300, lg: -150 }} mb={{ base: -350, lg: 0 }} px={0} maw={1920}>
@@ -19,10 +21,7 @@ export const Space = () => {
           pos={"absolute"}
         >
           <DarkBall />
-          <video loop playsInline autoPlay={true} muted width="100%">
-            <source src="/cards-video.webm" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <VideoPlayer border={false} publicId="cards-video_ticydw" />
         </AspectRatio>
       </Box>
     </Section>

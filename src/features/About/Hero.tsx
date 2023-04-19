@@ -9,7 +9,7 @@ export const Hero = () => {
   return (
     <Section maw={1920}>
       <Title data-aos="fade-up" mt={100} ta={"center"} mb={24} fz={{ base: 30, sm: 64 }}>
-        Core Finance (COREFU)
+        Core Finance (COREFI)
       </Title>
 
       <Text data-aos="fade-up" ta={"center"} maw={750} mx={"auto"} fz={20}>

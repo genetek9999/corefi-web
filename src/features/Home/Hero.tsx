@@ -6,6 +6,8 @@ import { ButtonCommon, Section } from "~/components";
 import { paths } from "~/constants";
 import { AdItem } from "~/constants/AdItem";
 
+import VideoPlayer from "./Components/Video";
+
 export const Hero = () => {
   return (
     <Section pb={0} px={0} maw={1920}>
@@ -65,10 +67,7 @@ export const Hero = () => {
                 mx={"auto"}
                 ratio={1200 / 651}
               >
-                <video style={{ borderRadius: "20px" }} loop playsInline autoPlay={true} muted width="100%">
-                  <source src="/VidHero.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <VideoPlayer border publicId="Final_Comp_FK333_vl85xn" />
               </AspectRatio>
 
               {/* <AspectRatio
